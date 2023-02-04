@@ -1,0 +1,41 @@
+.header-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.logo{
+    filter: brightness(150%);
+}
+
+.header-container a{
+    color: white;
+}
+
+
+.sections a{
+    margin-left: 4rem;
+}
+
+.register a{
+    margin-right: 2rem;
+}
+
+
+
+#home-img img{
+    max-width: 5rem;
+    max-height: 5rem;
+    height: fit-content;
+    width: fit-content;
+    margin-left: 2rem;
+    margin-top: -1rem;
+}
+#home-img img:hover{
+    cursor: pointer;
+}
+
+.header-container a:hover {
+    cursor: pointer;
+    border-bottom: solid 1px black;
+}

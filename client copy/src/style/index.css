@@ -1,0 +1,109 @@
+body{
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+    /* background: linear-gradient(90deg, #FFC3A1,#A75D5D); */
+    background: linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.50)), url(https://img.freepik.com/premium-photo/tasty-pepperoni-pizza-black-concrete-background_79782-103.jpg?w=2000) no-repeat fixed center;
+    background-size: cover;
+
+}
+    /* background: #FFC3A1; */
+
+#main{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    
+
+}
+
+.slogan{
+    margin: auto;
+    color: white;
+    text-align: center;
+}
+
+.slogan h1{
+    font-size: 90px;
+}
+
+.form{
+    max-width: 50%;
+    max-height: 50%;
+    width: 30rem;
+    background-color: transparent;
+    padding: 1rem;
+    margin-top: 3rem;
+    border-radius: 30px;
+    justify-items: center;
+    color: white;
+
+}
+.form h1{
+    text-align: center;
+    color: white;
+}
+
+.input{
+    max-width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 1.2rem;
+    color: white;
+}
+
+
+label{
+    display: block;
+    font-weight: 400;
+    margin-bottom: 10px;
+    color: white;
+}
+
+input{
+    font: inherit;
+    max-height: 80%;
+    width: 20rem;
+    height: 2rem;
+    border: none;
+    border-bottom: solid 1px white;
+    background-color: transparent;
+    color: white;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:focus{
+    border-bottom: solid 1px black;
+    outline: none;
+}
+.file{
+    border: none;
+    background-color: transparent;
+}
+.submit{
+    display: block;
+    font: inherit;
+    font-weight: 500;
+    margin: 0 auto;
+    margin-top: 1rem;
+    width: 10rem;
+    border: black solid 2px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 1px grey ;
+}
+
+.submit:hover{
+    cursor: pointer;
+    background-color: rgb(37, 37, 37);
+    color: white;
+
+}
+
+textarea{
+    resize: none
+}

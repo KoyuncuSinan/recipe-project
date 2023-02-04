@@ -1,0 +1,39 @@
+#login-form {
+    margin: 0 auto;
+    max-width: 50%;
+    max-height: 50%;
+    width: 30rem;
+    background-color: rgb(161, 176, 136);
+    padding: 1rem;
+    margin-top: 3rem;
+    border-radius: 30px;
+    justify-items: center;
+    color: white;
+}
+
+#login-form h1{
+    text-align: center;
+}
+
+button {
+    display: block;
+    font: inherit;
+    font-weight: 500;
+    margin: 0 auto;
+    margin-top: 1rem;
+    width: 10rem;
+    height: 2rem;
+    border: black solid 2px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 1px grey ;
+    background-color: transparent;
+
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: rgb(37, 37, 37);
+    color: white;
+}
