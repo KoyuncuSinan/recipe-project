@@ -33,7 +33,7 @@ export default function CommunityRecipes(){
             <button onClick={() => navigate("/community/create")}>Create a new recipe</button>
             <div className="recipes">
                 {recipe.length >= 1 ? (recipe.map((item,index) => (
-                    <a key={item._id} className= "recipe">
+                    <a key={item._id} onClick={() => navigate(`/community/recipes/${item._id}`)} className= "recipe">
                         <img src = {item.picturePath} alt="Recipe"></img>
                         <h2>{item.title}</h2>
                     </a>

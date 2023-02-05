@@ -107,19 +107,3 @@ export const createRecipe = async(req,res) => {
 //     }
 // }
 
-export const singleRecipe = async(req,res) => {
-
-    const recipeId = mongoose.Types.ObjectId(req.params.id)
-    try{
-        const recipe = await Recipe.findById(recipeId);
-
-        if(!recipe){
-            res.status(404).json("Can't find the recipe!");
-            return
-        }
-        res.json(recipe)
-
-    } catch(err){
-        res.status(500).json({error: err.message})
-    }
-}
