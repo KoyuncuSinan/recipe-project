@@ -17,8 +17,8 @@ const RecipeSchema = new mongoose.Schema(
             required: true,
         },
         ingredients : {
-            type: Array,
-            default: []
+            type: String,
+            required:true
         },
     },
     {timestamps:true}

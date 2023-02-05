@@ -1,6 +1,6 @@
 .recipes {
   width: 85rem;
-  height: 85rem;
+  height: 70rem;
   max-width: 90%;
   max-height: 90%;
   margin: 2rem auto;
@@ -42,6 +42,8 @@
 .recipes img {
   max-width: 100%;
   max-height: 100%;
+  width: 300px;
+  height: 120px;
   object-fit: cover;
   border-radius: 10px;
   box-sizing: border-box;

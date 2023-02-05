@@ -36,7 +36,7 @@ export default function CreateRecipe() {
       if(res.status === 200 || res.status === 201){
         const data = await res.json();
         console.log(data);
-        navigate("/");
+        navigate("/community/recipes");
       }else{
         throw new Error(res.statusText);
       }
@@ -91,13 +91,14 @@ export default function CreateRecipe() {
             </div>
             <div className="input">
               <label htmlFor="ingredients">Ingredients</label>
-              <input
+              <textarea
                 id="ingredients"
-                type="text"
                 onChange={(e) =>
                   setIngredients(e.target.value)}
                 name= "ingredients"
                 value={ingredients}
+                rows="10"
+                cols= "41"
               />
             </div>
             <button className="submit">Submit</button>
