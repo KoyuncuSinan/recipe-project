@@ -7,6 +7,7 @@ import Navbar from "../src/Navbar"
 import Recipes from "../src/Recipes"
 import RecipePage from "../src/RecipePage"
 import CreateRecipe from "../src/CreateRecipe";
+import CommunityRecipes from "../src/CommunityRecipes";
 
 import "../src/style/index.css"
 import "../src/style/navbar.css"
@@ -28,6 +29,7 @@ export default function App(){
                     <Route path = "/recipes" element = <Recipes /> />
                     <Route path = "/recipes/:id" element = <RecipePage /> />
                     <Route path = "/community/create" element = <CreateRecipe/> />
+                    <Route path = "/community/recipes" element = <CommunityRecipes/> />
                 </Routes>
             </BrowserRouter>
 

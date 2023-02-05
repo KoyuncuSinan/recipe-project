@@ -11,6 +11,7 @@ import authRoutes from "./routes/route-auth.js"
 // import recipeRoutes from "./routes/route-recipe.js"
 import recipeImageRoute from "./controllers/recipe-controller.js"
 import {register} from "./controllers/auth.js"
+import routeRecipe from "./routes/route-recipe.js"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
@@ -37,12 +38,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 
 // Routes with files
-app.post("/auth/register", upload.single("picture"),register)
+app.post("/auth/register", upload.single("picture"),register);
 
 //Routes
-app.use("/auth", authRoutes)
+app.use("/auth", authRoutes);
 // app.use("/community",recipeRoutes )
-app.use("/community",recipeImageRoute)
+app.use(routeRecipe);
+app.use("/community",recipeImageRoute);
 
 // Mongoose
 const PORT = process.env.PORT || 6001 // for backup
