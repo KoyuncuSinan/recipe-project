@@ -34,7 +34,7 @@ export default function Navbar(){
                 </div>
                 <div className="sections">
                     <a onClick = {() => navigate("/recipes")}>Recipes</a>
-                    <a onClick = {() => navigate()}>Community</a>
+                    <a onClick = {isLogin ? () => navigate("/community/recipes"):  () => alert("You need to log in to see community recipes")}>Community</a>
                 </div>
                 <div className="register">
                     {isLogin ? "" : 

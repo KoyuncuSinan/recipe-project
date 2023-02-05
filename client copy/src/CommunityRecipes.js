@@ -30,7 +30,7 @@ export default function CommunityRecipes(){
     return(
         <>
             <h1 className="recipe-h1">Community Recipes</h1>
-            <button onClick={() => navigate("/community/create")}>Create a new recipe</button>
+            <button onClick={() => navigate("/community/create")} className="create-recipe">Create a new recipe</button>
             <div className="recipes">
                 {recipe.length >= 1 ? (recipe.map((item,index) => (
                     <a key={item._id} onClick={() => navigate(`/community/recipes/${item._id}`)} className= "recipe">

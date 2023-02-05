@@ -50,7 +50,7 @@ export default function CreateRecipe() {
   }, [localStorage.getItem("token")]);
 
   return (
-    <>
+    <div className="form-parent">
       {isLogin ? (
         <form onSubmit={handleSubmit} className= "form">
           <h1>Create a Recipe</h1>
@@ -107,6 +107,6 @@ export default function CreateRecipe() {
       ) : (
         "You need to login"
       )}
-    </>
+    </div>
   );
 }
