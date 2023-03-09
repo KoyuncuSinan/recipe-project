@@ -12,7 +12,7 @@ export const register = async(req,res) => {
 
         const newUser = new User({
             firstname : req.body.firstname,
-            lastname: req.body.lastName,
+            lastname: req.body.lastname,
             email: req.body.email,
             password: passwordHash,
             picturePath: req.file.location,

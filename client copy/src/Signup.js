@@ -4,38 +4,37 @@ import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [form, setForm] = useState({
-    firstName: "",
-    lastsName: "",
+    firstname: "",
+    lastname: "",
     email: "",
     password: "",
-    picturePath: "",
     location: "",
     profession: "",
   });
+  const [imagePath, setImagePath] = useState("")
+
+  const addToFormData = (formData, fields) => {
+    for (const field in fields){
+      formData.append(field,fields[field]);
+    }
+  }
+
   const navigate = useNavigate();
+  const formData = new FormData();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      addToFormData(formData, form)
+      formData.append("picturePath",imagePath)
       const res = await fetch("http://localhost:3001/auth/register", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
+        body: formData
       });
       const data = await res.json();
       console.log(data);
-      navigate("/auth/register");
-      setForm({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        picturePath: "",
-        location: "",
-        profession: "",
-      });
+      setForm(data)
+      navigate("/recipes");
     } catch (err) {
       return err;
     }
@@ -49,67 +48,69 @@ export default function Signup() {
         <h3>Don't waste your time to find the best dish </h3>
         <p>Register now and reach thousands of community made easy recipes</p>
       </div>
-      <form onSubmit={handleSubmit} className= "form">
+      <form onSubmit={handleSubmit} className= "form" encType="multipart/form-data">
         <h1>Signup</h1>
         <div className="inputs">
           <div className="input">
-            <label>Firstname</label>
+            <label htmlFor="firstname">Firstname</label>
             <input
               type="text"
               onChange={(e) =>
                 setForm({ ...form, [e.target.name]: e.target.value })
               }
-              name="firstName"
-              value={form.firstName}
+              name="firstname"
+              id="firstname"
+              value={form.firstname}
             ></input>
           </div>
           <div className="input">
-          <label>Lastname</label>
+          <label htmlFor="lastname">Lastname</label>
             <input
               type="text"
               onChange={(e) =>
                 setForm({ ...form, [e.target.name]: e.target.value })
               }
-              name="lastName"
-              value={form.lastName}
+              name="lastname"
+              id="lastname"
+              value={form.lastname}
             ></input>
           </div>
           <div className="input">
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
             <input
               type="email"
               onChange={(e) =>
                 setForm({ ...form, [e.target.name]: e.target.value })
               }
+              id= "email"
               name="email"
               value={form.email}
             ></input>
           </div>
           <div className="input">
-          <label>Password</label>
+          <label htmlFor="password">Password</label>
             <input
               type="password"
               onChange={(e) =>
                 setForm({ ...form, [e.target.name]: e.target.value })
               }
               name="password"
+              id="password"
               value={form.password}
             ></input>
           </div>
           <div className="input">
-            <label>Image</label>
+            <label htmlFor="picturePath">Image</label>
             <input
               type="file"
               className="file"
-              onChange={(e) =>
-                setForm({ ...form, [e.target.name]: e.target.value })
-              }
+              onChange={(e) => setImagePath(e.target.files[0])}
               name="picturePath"
-              value={form.picturePath}
+              id="picturePath"
             ></input>
           </div>
           <div className="input">
-          <label>Location</label>
+          <label htmlFor="location">Location</label>
             <input
               type="text"
               onChange={(e) =>
@@ -117,10 +118,11 @@ export default function Signup() {
               }
               name="location"
               value={form.location}
+              id="location"
             ></input>
           </div>
           <div className="input">
-            <label>Profession</label>
+            <label htmlFor="profession">Profession</label>
             <input
               type="text"
               onChange={(e) =>
@@ -128,6 +130,7 @@ export default function Signup() {
               }
               name="profession"
               value={form.profession}
+              id= "profession"
             ></input>
             <input type="submit" className="submit"></input>
           </div>
