@@ -1,6 +1,7 @@
 import React from "react";
 import { useState,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 
 export default function Navbar(){
@@ -8,11 +9,12 @@ export default function Navbar(){
     const [isLogin, setIsLogin] = useState(null);
 
     const navigate = useNavigate()
-    
+    let userId
     useEffect(() => {
         const token = localStorage.getItem("token")
         if(token){
             setIsLogin(token)
+            userId = jwt_decode(token).id
         }
     }, [localStorage.getItem("token")]);
 
@@ -35,6 +37,7 @@ export default function Navbar(){
                 <div className="sections">
                     <a onClick = {() => navigate("/recipes")}>Recipes</a>
                     <a onClick = {isLogin ? () => navigate("/community/recipes"):  () => alert("You need to log in to see community recipes")}>Community</a>
+                    {isLogin ? <a onClick = {() => navigate(`/user/${userId}`)}>Profile</a>: ""}
                 </div>
                 <div className="register">
                     {isLogin ? "" : 
