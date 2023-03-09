@@ -20,6 +20,18 @@ const RecipeSchema = new mongoose.Schema(
             type: String,
             required:true
         },
+        comments: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Comments"
+
+        }],
+        like_count: {
+            type: Number
+        },
+        owner: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
     },
     {timestamps:true}
 )

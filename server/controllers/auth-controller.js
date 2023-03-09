@@ -5,35 +5,29 @@ import User from "../models/User.js"
 // Register
 export const register = async(req,res) => {
     try{
-        const {
-            firstName,
-            lastName,
-            email,
-            password,
-            picturePath,
-            location,
-            profession,
 
-        } = req.body;
-
+        const password = req.body.password
         const salt = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(password,salt);
 
         const newUser = new User({
-            firstName,
-            lastName,
-            email,
+            firstname : req.body.firstname,
+            lastname: req.body.lastName,
+            email: req.body.email,
             password: passwordHash,
-            picturePath,
-            location,
-            profession,
+            picturePath: req.file.location,
+            location: req.body.location,
+            profession: req.body.profession,
         });
+
         const savedUser = await newUser.save();
         res.status(201).json(savedUser)
     } catch (err){
         res.status(500).json({error: err.message});
     }
 };
+
+//Login
 
 export const login = async(req,res) => {
     try{

@@ -8,9 +8,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import helmet from "helmet";
 import authRoutes from "./routes/route-auth.js"
-// import recipeRoutes from "./routes/route-recipe.js"
-import recipeImageRoute from "./controllers/recipe-controller.js"
-import {register} from "./controllers/auth.js"
 import routeRecipe from "./routes/route-recipe.js"
 
 const __filename = fileURLToPath(import.meta.url);
@@ -25,26 +22,10 @@ app.use(helmet.crossOriginResourcePolicy({policy: "cross-origin"}))
 app.use(bodyParser.json({limit: "30mb", extended:true}))
 app.use(bodyParser.urlencoded({limit: "30mb"}))
 
-// Storage
-
-const storage = multer.diskStorage({
-    destination: function(req,file,cb){
-        cb(null,"public/assets");
-    },
-    filename: function(req,file,cb){
-        cb(null,file.originalname);
-    },
-})
-const upload = multer({ storage })
-
-// Routes with files
-app.post("/auth/register", upload.single("picture"),register);
-
 //Routes
 app.use("/auth", authRoutes);
 // app.use("/community",recipeRoutes )
 app.use(routeRecipe);
-app.use("/community",recipeImageRoute);
 
 // Mongoose
 const PORT = process.env.PORT || 6001 // for backup

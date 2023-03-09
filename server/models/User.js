@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 const UserSchema = new mongoose.Schema(
     {
-        firstName:{
+        firstname:{
             type: String,
             required: true,
             min: 2,
             max: 50,
         },
-        lastName:{
+        lastname:{
             type: String,
             required: true,
             min: 2,
@@ -29,6 +29,19 @@ const UserSchema = new mongoose.Schema(
             type: String,
             default: "",
         },
+        recipes:[
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Recipe" 
+            }
+
+        ],
+        bookmarks:[
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Recipe"
+            }
+        ],
         location: String,
         profession: String,
     }, {timestamps: true}
