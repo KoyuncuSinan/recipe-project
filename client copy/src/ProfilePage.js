@@ -32,12 +32,10 @@ export default function ProfilePage() {
     getProfilePage()
   },[id]);
 
-  if(!profile){
-    return <div>Loading...</div>
-  }
 
   return(
     <>
+      {profile && (
         <section className="profile-page-head">
             <img src={profile.picturePath} alt="User profile picture"></img>
             <div className="name-surname">
@@ -50,6 +48,7 @@ export default function ProfilePage() {
             </div>
 
         </section>
+      )}
     </>
   )
 

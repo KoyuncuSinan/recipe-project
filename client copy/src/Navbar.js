@@ -7,22 +7,32 @@ import jwt_decode from "jwt-decode";
 export default function Navbar(){
 
     const [isLogin, setIsLogin] = useState(null);
+    const [userId, setUserId] = useState(null)
 
     const navigate = useNavigate()
-    let userId
     useEffect(() => {
         const token = localStorage.getItem("token")
         if(token){
+            const decoded = jwt_decode(token)
             setIsLogin(token)
-            userId = jwt_decode(token).id
+            setUserId(decoded.id)
+            console.log(userId)
+        }else{
+            setIsLogin(null);
+            setUserId(null);
         }
     }, [localStorage.getItem("token")]);
 
     const logout = () => {
-        localStorage.clear("token")
+        localStorage.removeItem("token")
         setIsLogin(null)
+        setUserId(null)
         navigate("/")
         console.log("Logged out")
+    }
+
+    const profileClick = () => {
+        navigate(`/user/${userId}`)
     }
 
     return(
@@ -37,7 +47,7 @@ export default function Navbar(){
                 <div className="sections">
                     <a onClick = {() => navigate("/recipes")}>Recipes</a>
                     <a onClick = {isLogin ? () => navigate("/community/recipes"):  () => alert("You need to log in to see community recipes")}>Community</a>
-                    {isLogin ? <a onClick = {() => navigate(`/user/${userId}`)}>Profile</a>: ""}
+                    {isLogin && userId && (<a onClick = {profileClick}>Profile</a>)}
                 </div>
                 <div className="register">
                     {isLogin ? "" : 

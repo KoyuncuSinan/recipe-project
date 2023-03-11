@@ -9,7 +9,7 @@ import RecipePage from "../src/RecipePage"
 import CreateRecipe from "../src/CreateRecipe";
 import CommunityRecipes from "../src/CommunityRecipes";
 import CommunitySingle from "../src/CommunitySingle";
-import ProfilePage from "./ProfilePage";
+import ProfilePage from "../src/ProfilePage";
 
 import "../src/style/index.css"
 import "../src/style/navbar.css"
