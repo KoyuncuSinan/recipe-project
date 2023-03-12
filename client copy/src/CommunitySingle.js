@@ -1,10 +1,14 @@
 import React from "react"
 import {useState, useEffect} from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import Bookmark from "./components/bookmark.js"
+import jwt_decode from "jwt-decode"
 
 export default function CommunitySingle(){
     const [singleRecipe, setSingleRecipe] = useState([]);
     const {id} = useParams()
+    const token = localStorage.getItem("token")
+    const userId = jwt_decode(token).id
 
     useEffect(() =>{
         const getRecipe = async () => {
@@ -40,6 +44,7 @@ export default function CommunitySingle(){
                 <p className="instruction">{singleRecipe.description}</p>
                 <h2>Ingredients</h2>
                 <p className="community-ingredients">{singleRecipe.ingredients}</p>
+                <Bookmark recipeId={singleRecipe._id}/>
             </div>
 
             : "Loading..."}

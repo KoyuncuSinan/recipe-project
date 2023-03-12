@@ -96,3 +96,33 @@ export const singleRecipe = async(req,res) => {
         res.status(500).json({error: err.message})
     }
 }
+
+export const bookmarked = async(req,res) => {
+    const {recipeId, userId} = req.body;
+
+    try{
+        const recipe = await Recipe.findById(recipeId)
+        if(!recipe){
+            return res.status(400).json({msg: "Recipe not found"})
+        }
+
+        const user = await User.findById(userId);
+        if(!user){
+            return res.status(404).json({msg: "User not found"});
+        }
+
+        const index = user.bookmarks.indexOf(recipeId)
+        if(index === -1){
+            user.bookmarks.push(recipeId)
+            await user.save();
+            res.json({msg: "Recipe bookmarked"})
+        }else{
+            user.bookmarks.splice(index, 1);
+            await user.save();
+            res.json({msg:"Bookmark removed"})
+        }
+    }catch(err){
+        console.error(err);
+        res.status(500).json({message:"Server error"})
+    }
+}

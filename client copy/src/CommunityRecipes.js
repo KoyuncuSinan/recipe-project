@@ -4,6 +4,7 @@ import { Navigate, useAsyncError, useNavigate } from "react-router-dom";
 export default function CommunityRecipes(){
     const [recipe,setRecipe] = useState([]);
     const navigate = useNavigate();
+    const token = localStorage.getItem("token")
 
     useEffect(() => {
         const allRecipes = async () => {
@@ -12,6 +13,7 @@ export default function CommunityRecipes(){
                     method: "GET",
                     headers:{
                         "Content-Type":"application/json",
+                        Authorization: `Bearer ${token}`
                     },
                 });
                 const data = await res.json();

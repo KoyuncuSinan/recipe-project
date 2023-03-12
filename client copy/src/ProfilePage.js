@@ -10,7 +10,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const getProfilePage = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/user/${id}`,{
+        const res = await fetch(`http://localhost:3001/users/${id}`,{
             method:"GET",
             headers:{
                 "Content-Type":"application/json",
