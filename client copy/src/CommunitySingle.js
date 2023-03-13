@@ -3,6 +3,8 @@ import {useState, useEffect} from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Bookmark from "./components/bookmark.js"
 import jwt_decode from "jwt-decode"
+import MakeComment from "./components/MakeComment.js"
+import GetComments from "./components/GetComments.js"
 
 export default function CommunitySingle(){
     const [singleRecipe, setSingleRecipe] = useState([]);
@@ -45,6 +47,10 @@ export default function CommunitySingle(){
                 <h2>Ingredients</h2>
                 <p className="community-ingredients">{singleRecipe.ingredients}</p>
                 <Bookmark recipeId={singleRecipe._id}/>
+            <div className="comment-section">
+                <GetComments recipeId= {singleRecipe._id} />
+                <MakeComment recipeId= {singleRecipe._id} />
+            </div>
             </div>
 
             : "Loading..."}
