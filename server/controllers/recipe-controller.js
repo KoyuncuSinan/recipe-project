@@ -77,7 +77,7 @@ export const createRecipe = async (req, res) => {
 
 export const getRecipe = async (req, res) => {
   try {
-    const recipe = await Recipe.find();
+    const recipe = await Recipe.find().populate("owner");
     res.status(200).json(recipe);
   } catch (err) {
     res.status(500).json({ error: err.message });
