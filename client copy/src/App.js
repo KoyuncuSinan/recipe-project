@@ -10,14 +10,7 @@ import CreateRecipe from "../src/CreateRecipe";
 import CommunityRecipes from "../src/CommunityRecipes";
 import CommunitySingle from "../src/CommunitySingle";
 import ProfilePage from "../src/ProfilePage";
-
-import "../src/style/index.css"
-import "../src/style/navbar.css"
-import "../src/style/login.css"
-import "../src/style/recipes.css"
-import "../src/style/recipePage.css"
-import "../src/style/homepage.css"
-
+import "./index.css"
 
 export default function App(){ 
     return(
