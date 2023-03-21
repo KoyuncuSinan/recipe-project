@@ -35,8 +35,8 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="flex flex-row justify-around items-center py-3 mx-4 text-black" >
-        <div className="basis-8 lg:basis-20">
+      <div className="flex flex-row justify-around items-center pt-5 mx-4 text-black" >
+        <div className="basis-8 md:basis-16">
           <img
             src="https://www.transparentpng.com/thumb/food/n0nASj-food-plate-cut-out.png"
             onClick={() => navigate("/")}
@@ -44,7 +44,7 @@ export default function Navbar() {
           ></img>
         </div>
         <div>
-          <a onClick={() => navigate("/recipes")} className="px-1 hover:underline">
+          <a onClick={() => navigate("/recipes")} className="px-1 md:px-4 hover:underline">
             Recipes
           </a>
           <a
@@ -53,17 +53,17 @@ export default function Navbar() {
                 ? () => navigate("/community/recipes")
                 : () => alert("You need to log in to see community recipes")
             }
-            className="px-1 hover:underline"
+            className="px-1 md:px-4 hover:underline" 
           >
             Community
           </a>
           {isLogin && userId && (
-            <a onClick={profileClick} className="px-1 hover:underline">
+            <a onClick={profileClick} className="px-1 md:px-4 hover:underline">
               Profile
             </a>
           )}
         </div>
-        <div className=" flex flex-col basis-1/10 text-xs text-center">
+        <div className=" flex flex-col basis-1/10 md:basis-20 text-xs md:text-lg text-center">
           {isLogin ? (
             ""
           ) : (

@@ -52,15 +52,16 @@ export default function Searchbar() {
   }, []);
 
   return (
-    <div className="search">
-      <div className="searchInputs">
+    <div className="">
+      <div className="searchInputs w-4/5 md:w-1/2 mx-auto relative my-4 rounded-xl border-none shadow-sm shadow-[#E0A96D]">
         <input
           type="text"
           placeholder="Search an recipe"
           value={wordEntered}
           onChange={handleFilter}
+          className = "w-full text-inherit font-light rounded-xl px-2 h-7 md:h-9 outline-none"
         />
-        <div className="searchIcon">
+        <div className="searchIcon absolute bottom-0.5 md:bottom-1 right-2">
           {wordEntered.length === 0 ? (
             <SearchIcon />
           ) : (
@@ -69,7 +70,7 @@ export default function Searchbar() {
         </div>
       </div>
       {filteredData.length != 0 && (
-        <div className="dataResult">
+        <div className="dataResult w-4/5 md:w-1/2 mx-auto bg-white p-2 -mt-2.5 rounded-md">
           {filteredData.slice(0, 15).map((value, key) => {
             return (
               <a
@@ -79,12 +80,10 @@ export default function Searchbar() {
               >
                 <p>{value.title}</p>
               </a>
-            );
+            )
           })}
-          ;
         </div>
       )}
-      ;
     </div>
   );
 }
