@@ -1,6 +1,8 @@
 import React,{useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
+import BookmarkRemoveIcon from '@mui/icons-material/BookmarkRemove';
 
 export default function Bookmark({recipeId}){
     const [isBookmarked, setIsBookmarked] = useState(false);
@@ -65,8 +67,8 @@ export default function Bookmark({recipeId}){
     }
 
     return(
-        <button onClick={handleBookmark}>
-            {userId && isBookmarked ? "Remove Bookmark" : "Bookmark Recipe"}
+        <button onClick={handleBookmark} className= "absolute right-0">
+            {userId && isBookmarked ? <BookmarkRemoveIcon/> : <BookmarkAddIcon/>}
         </button>
     )
 }

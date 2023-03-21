@@ -10,7 +10,6 @@ export default function MakeComment({recipeId}) {
 
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     try {
       const res = await fetch(
         `http://localhost:3001/community/recipes/${recipeId}/comments`,

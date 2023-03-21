@@ -5,10 +5,10 @@ export default function GetComments({ recipeId }) {
 
   useEffect(() => {
     const handleComments = async () => {
-        if (!recipeId) {
-            console.log("Recipe ID is not defined");
-            return;
-          }
+      if (!recipeId) {
+        console.log("Recipe ID is not defined");
+        return;
+      }
       try {
         const res = await fetch(
           `http://localhost:3001/community/recipes/${recipeId}/comments`,
@@ -32,21 +32,25 @@ export default function GetComments({ recipeId }) {
       }
     };
     handleComments();
-  }, [recipeId]);
+  }, [comments.length]);
 
   const displayComments =
-    comments.length > 0
-      ? comments.map((comment, index) => {
+    comments && comments.length !== 0
+      ? comments?.map((comment, index) => {
           return (
-            <div key={comment._id}>
-              <img src={comment.author.picturePath}></img>
-              <p>{comment.author.firstname}</p>
-              <p>{comment.author.lastname}</p>
-              <p>{comment.comment}</p>
-            </div>
+            <section className="comments items-center bg-[#E0A96D] text-sm text-white p-0.5 rounded-md mb-2 shadow-lg h-16 " >
+              <div key={comment._id} className="flex flex-row w-1/4 mt-1 ml-2 ">
+                <img
+                  src={comment.author.picturePath}
+                  className="rounded-xl h-8 w-8"
+                ></img>
+                <p className="ml-3">{comment.author.firstname}</p>
+                <p className="ml-1">{comment.author.lastname}</p>
+              </div>
+              <p className="text-left mt-1 px-2 pb-1 overflow-x-auto">{comment.comment}</p>
+            </section>
           );
         })
       : "No comment has been made yet.";
-
   return <div>{displayComments}</div>;
 }
