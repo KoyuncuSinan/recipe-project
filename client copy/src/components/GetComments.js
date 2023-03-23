@@ -32,14 +32,16 @@ export default function GetComments({ recipeId }) {
       }
     };
     handleComments();
-  }, [comments.length]);
+  }, [recipeId]);
 
   const displayComments =
     comments && comments.length !== 0
       ? comments?.map((comment, index) => {
           return (
-            <section className="comments items-center bg-[#E0A96D] text-sm text-white p-0.5 rounded-md mb-2 shadow-lg h-16 " >
-              <div key={comment._id} className="flex flex-row w-1/4 mt-1 ml-2 ">
+            <section className="comments items-center bg-[#E0A96D] text-sm text-white p-0.5 rounded-md mb-2 shadow-lg
+            lg:w-3/4 lg:mx-auto
+            xl:w-2/4 xl:mx-auto" >
+              <div key={comment._id} className="flex flex-row w-2/4 mt-1 ml-2 ">
                 <img
                   src={comment.author.picturePath}
                   className="rounded-xl h-8 w-8"
@@ -47,10 +49,12 @@ export default function GetComments({ recipeId }) {
                 <p className="ml-3">{comment.author.firstname}</p>
                 <p className="ml-1">{comment.author.lastname}</p>
               </div>
-              <p className="text-left mt-1 px-2 pb-1 overflow-x-auto">{comment.comment}</p>
+
+              <p className="text-left mt-1 px-2 pb-1 overflow-auto">{comment.comment}</p>
+
             </section>
           );
         })
-      : "No comment has been made yet.";
+      : <p className="mb-4">No comment has been made yet.</p>
   return <div>{displayComments}</div>;
 }

@@ -87,7 +87,7 @@ export const getRecipe = async (req, res) => {
 export const singleRecipe = async (req, res) => {
   const recipeId = mongoose.Types.ObjectId(req.params.id);
   try {
-    const recipe = await Recipe.findById(recipeId);
+    const recipe = await Recipe.findById(recipeId).populate("owner");
     if (!recipe) {
       res.status(404).json("Can't find the recipe!");
       return;
