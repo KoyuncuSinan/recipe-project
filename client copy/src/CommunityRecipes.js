@@ -44,10 +44,10 @@ export default function CommunityRecipes() {
           Create a new recipe
         </button>
       </div>
-      <div className="md:grid md:grid-cols-2 2xl:grid-cols-3 md:w-4/5 gap-x-10 w-3/5 mx-auto">
+      <div className="md:grid md:grid-cols-2 2xl:grid-cols-3 md:w-1/2  w-3/5 mx-auto">
         {recipe.length >= 1
           ? recipe.map((item, index) => (
-              <div className="single-recipe p-3 bg-[#E0A96D] hover:bg-[#bc7d39] hover:text-white active:bg-[#201E20] 
+              <div className="single-recipe p-3 bg-[#E0A96D] hover:bg-[#bc7d39] text-white active:bg-[#201E20] 
               active:overflow-x-scroll mb-4 relative rounded-lg shadow-[#201E20] shadow-md
               md:w-4/4 md:mx-auto md:mt-8">
                 {item.owner && <ComRecipeOwner recipe={item} />}
@@ -62,9 +62,9 @@ export default function CommunityRecipes() {
                   <img
                     src={item.picturePath}
                     alt="Recipe"
-                    className="h-1/4 rounded-lg object-cover md:h-[25rem] md:w-[20rem] md:mx-auto border-solid border-2 border-[#201E20]"
+                    className="h-1/4 rounded-lg object-cover md:h-[15rem] md:w-[15rem] md:mx-auto border-solid border-2 border-[#201E20]"
                   ></img>
-                  <h2 className="mt-3 text-lg font-semibold md:mt-2 md:text-lg xl:mt-4 xl:text-xl ">{item.title}</h2>
+                  <h2 className="mt-3 text-lg md:mt-2 md:text-lg xl:mt-4 xl:text-lg ">{item.title}</h2>
                 </a>
               </div>
             )).reverse()

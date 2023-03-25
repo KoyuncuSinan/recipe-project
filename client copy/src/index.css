@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 html {
-  font-family: "montserrat", "sans-serrif";
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
- background:#DDC3A5;
+ background: rgb(235, 231, 231);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -15,3 +15,6 @@ body {
 a:hover {
   cursor: pointer;
 }
+
+
+/* #E0A96D */

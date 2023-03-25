@@ -1,15 +1,15 @@
 import React from "react";
-import Signup from "../src/Signup"
-import Login from "../src/Login"
+import Signup from "./Signup"
+import Login from "./Login"
 import {BrowserRouter,Routes,Route} from "react-router-dom"
-import Homepage from "../src/Homepage"
-import Navbar from "../src/Navbar"
-import Recipes from "../src/Recipes"
-import RecipePage from "../src/RecipePage"
-import CreateRecipe from "../src/CreateRecipe";
-import CommunityRecipes from "../src/CommunityRecipes";
-import CommunitySingle from "../src/CommunitySingle";
-import ProfilePage from "../src/ProfilePage";
+import Homepage from "./Homepage"
+import Navbar from "./Navbar"
+import Recipes from "./Recipes"
+import RecipePage from "./RecipePage"
+import CreateRecipe from "./CreateRecipe";
+import CommunityRecipes from "./CommunityRecipes";
+import CommunitySingle from "./CommunitySingle";
+import ProfilePage from "./ProfilePage";
 import "./index.css"
 
 export default function App(){ 

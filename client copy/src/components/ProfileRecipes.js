@@ -7,7 +7,7 @@ export default function ProfileRecipes({ profile }) {
   const recipeList = recipes.map((recipe, index) => {
     return (
       <div
-        className="text-center mt-5 mx-auto bg-[#bc7d39] p-4 sx:p-2 rounded-md  text-white shadow-lg
+        className="text-center mt-5 mx-auto font-mono bg-[#bc7d39] p-4 sx:p-2 rounded-md  text-white shadow-lg
       sx:w-2/3 
       lg:w-3/4 lg:hover:w-[80%]" 
         key={recipe._id}

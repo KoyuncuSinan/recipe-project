@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Caraousel from "./components/Caraousel";
 
 export default function Homepage() {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col justify-between items-center text-center mt-12 md:mt-36 max-w-xs mx-auto sm:max-w-sm md:max-w-xl  lg:max-w-4xl">
+      <Caraousel />
       <div className="homepage">
         <h1 className="tracking-wide text-5xl font-semibold md:text-7xl">
           Easy, fast and short
@@ -21,7 +23,7 @@ export default function Homepage() {
       </div>
       <div>
         <button
-          className="mt-8 bg-[#E0A96D] hover:bg-[#201E20] p-2 rounded-lg ring-2  text-slate-200 font-semibold hover:cursor-pointer"
+          className="mt-8 bg-[#E0A96D] hover:bg-[#512e0e] p-2 rounded-lg ring-2  text-slate-200 font-semibold hover:cursor-pointer"
           onClick={() => {
             navigate("/auth/register");
           }}
@@ -31,7 +33,7 @@ export default function Homepage() {
         <p>or</p>
         <button
           onClick={() => navigate("/recipes")}
-          className="bg-[#E0A96D] hover:bg-[#201E20] p-2 rounded-lg ring-2  text-slate-200 font-semibold hover:cursor-pointer"
+          className="bg-[#E0A96D] hover:bg-[#512e0e] p-2 rounded-lg ring-2  text-slate-200 font-semibold hover:cursor-pointer"
         >
           See the official recipes
         </button>
