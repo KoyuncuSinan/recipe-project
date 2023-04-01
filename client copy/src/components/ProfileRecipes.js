@@ -1,8 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import DeleteRecipe from "./DeleteRecipe";
+import jwtDecode from "jwt-decode";
+import Delete from "@mui/icons-material/Delete";
+
 
 export default function ProfileRecipes({ profile }) {
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const userId = jwtDecode(token).id;
+
   const recipes = profile.recipes;
   const recipeList = recipes.map((recipe, index) => {
     return (
@@ -26,7 +33,7 @@ export default function ProfileRecipes({ profile }) {
           </p>
         </span>
         <h2 className="text-lg font-semibold mb-2">{recipe.title}</h2>
-        
+        {recipe.owner === userId && <DeleteRecipe recipeId={recipe._id} />}
       </div>
     );
   });
