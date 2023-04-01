@@ -71,11 +71,11 @@ export default function CreateRecipe() {
   return (
     <div className="form-parent">
       {isLogin ? (
-        <form onSubmit={handleSubmit} className="form">
-          <h1>Create a Recipe</h1>
-          <div className="inputs">
-            <div className="input">
-              <label htmlFor="title">Recipe Name</label>
+        <form onSubmit={handleSubmit} className="form w-9/10 mx-auto md:w-[75%] xl:w-[65%] 2xl:w-[50%]">
+          <h1 className="text-center mt-4 font-semibold text-md">Create a Recipe</h1>
+          <div className="inputs w-[90%] mx-auto mt-3 relative">
+            <div className="input flex flex-col">
+              <label htmlFor="title" className="inline-block">Recipe Name</label>
               <input
                 id="title"
                 type="text"
@@ -84,26 +84,26 @@ export default function CreateRecipe() {
                 name="title"
               />
             </div>
-            <div className="input">
+            <div className="mt-4">
               <label htmlFor="description">How to cook</label>
-              <ReactQuill theme="snow" value={description} onChange= {setDescription} id="description"/>
+              <ReactQuill theme="snow" value={description} onChange= {setDescription} id="description" className="h-[8rem]"/>
 
             </div>
-            <div className="input">
+            <div className="mt-[5rem] flex flex-col">
               <label htmlFor="picturePath">Food Image</label>
               <input
                 id="picturePath"
                 type="file"
-                className="file"
+                className="file mt-2"
                 onChange={handleFileChange}
                 name="picturePath"
               />
             </div>
-            <div className="input">
+            <div className="mt-4">
               <label htmlFor="ingredients">Ingredients</label>
-              <ReactQuill theme="snow" value={ingredients} onChange= {setIngredients} id="ingredients"/>
+              <ReactQuill theme="snow" value={ingredients} onChange= {setIngredients} id="ingredients" className="h-[8rem]" />
             </div>
-            <button className="submit">Submit</button>
+            <button className="submit mt-[5rem] absolute right-1 bg-[#512e0e] hover:bg-[#bc7d39] text-white px-3 py-1 rounded-md ">Submit</button>
           </div>
         </form>
       ) : (

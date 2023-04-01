@@ -74,7 +74,7 @@ export default function Searchbar() {
           {filteredData.slice(0, 15).map((value, key) => {
             return (
               <a
-                className="dataItem"
+                className="dataItem hover:text-[#E0A96D]"
                 href={`http://localhost:3001/community/recipes/${value._id}`}
                 target="_blank"
               >

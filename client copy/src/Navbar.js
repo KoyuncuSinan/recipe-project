@@ -81,6 +81,7 @@ export default function Navbar() {
             )}
           </div>
           <div className=" flex flex-row justify-between mr-4 right-2 absolute">
+
             {isLogin ? (
               ""
             ) : isMobile ? (
@@ -96,9 +97,10 @@ export default function Navbar() {
                 Sign up
               </a>
             )}
+
             {isMobile ? null : <div className="w-px h-6 bg-gray-500 mx-2"></div>}
-            {isLogin ? (
-              <a onClick={logout} className="hover:underline italic">
+            {isLogin ? ( isMobile ? <PersonIcon className="hover:cursor-pointer"
+                onClick={changeClickPerson}/> : <a onClick={logout} className="hover:underline italic">
                 Logout
               </a>
             ) : isMobile ? (
@@ -108,7 +110,7 @@ export default function Navbar() {
                 onClick={() => navigate("/auth/login")}
                 className="hover:underline"
               >
-                Login{" "}
+                Login
               </a>
             )}
           </div>
@@ -128,10 +130,11 @@ export default function Navbar() {
                   Sign up
                 </a>
               )}
-              <div className="w-px h-6 bg-gray-500 mx-2"></div>
-              {/* vertical line */}
+              
+              <div className="w-px h-6 bg-gray-500 mx-2"></div> {/* vertical line */}
+              
               {isLogin ? (
-                <a onClick={logout} className="hover:underline">
+                <a onClick={logout} className="hover:underline absolute right-3">
                   Logout
                 </a>
               ) : (
