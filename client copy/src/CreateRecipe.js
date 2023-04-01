@@ -1,18 +1,21 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export default function CreateRecipe() {
   const [isLogin, setIsLogin] = useState(false);
   const [recipe, setRecipe] = useState({
     title: "",
-    description:"",
     picturePath: "",
-    ingredients: ""
-  })
-  const navigate = useNavigate();
+  });
+  const [description, setDescription] = useState("")
+  const [ingredients, setIngredients] = useState("")
 
+  const navigate = useNavigate();
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -20,9 +23,10 @@ export default function CreateRecipe() {
     }
   }, [localStorage.getItem("token")]);
 
-  const handleChange = (e) =>{
-    const {name, value} = e.target;
-    setRecipe((prevState => ({...prevState, [name]: value})))
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    
+    setRecipe((prevState) => ({...prevState,[name]:value}));
   };
 
   const handleFileChange = (e) => {
@@ -31,17 +35,18 @@ export default function CreateRecipe() {
       picturePath: e.target.files[0],
     }));
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
     const userId = jwt_decode(token).id;
     const data = new FormData();
     data.append("owner", userId);
+    data.append("ingredients",ingredients)
+    data.append("description",description)
     Object.keys(recipe).forEach((key) => {
       data.append(`${key}`, recipe[key]);
-    })
-
+    });
     try {
       const res = await fetch("http://localhost:3001/community/create", {
         method: "POST",
@@ -76,19 +81,13 @@ export default function CreateRecipe() {
                 type="text"
                 onChange={handleChange}
                 value={recipe.title}
-                name= "title"
+                name="title"
               />
             </div>
             <div className="input">
               <label htmlFor="description">How to cook</label>
-              <textarea
-                id="description"
-                value={recipe.description}
-                onChange={handleChange}
-                name="description"
-                rows="10"
-                cols="41"
-              />
+              <ReactQuill theme="snow" value={description} onChange= {setDescription} id="description"/>
+
             </div>
             <div className="input">
               <label htmlFor="picturePath">Food Image</label>
@@ -102,14 +101,7 @@ export default function CreateRecipe() {
             </div>
             <div className="input">
               <label htmlFor="ingredients">Ingredients</label>
-              <textarea
-                id="ingredients"
-                onChange={handleChange}
-                name="ingredients"
-                value={recipe.ingredients}
-                rows="10"
-                cols="41"
-              />
+              <ReactQuill theme="snow" value={ingredients} onChange= {setIngredients} id="ingredients"/>
             </div>
             <button className="submit">Submit</button>
           </div>

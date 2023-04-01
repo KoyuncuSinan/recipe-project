@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import parse from 'html-react-parser';
 import Bookmark from "./components/bookmark.js";
 import jwt_decode from "jwt-decode";
 import MakeComment from "./components/MakeComment.js";
@@ -60,13 +61,13 @@ export default function CommunitySingle() {
             <Bookmark recipeId={singleRecipe._id} />
           </div>
           <h3 className="mt-5 font-semibold mb-3 tracking-wide">How to Cook</h3>
-          <p className="instruction text-left bg-[#E0A96D] text-white rounded-md text-sm p-2 shadow-md">
-            {singleRecipe.description}
-          </p>
+          <div className="instruction text-left bg-[#E0A96D] text-white rounded-md text-sm p-2 shadow-md">
+            {parse(`${singleRecipe.description}`)}
+          </div>
           <h3 className="mt-5 font-semibold mb-3 tracking-wide">Ingredients</h3>
-          <p className="community-ingredients text-left bg-[#E0A96D] text-white rounded-md text-sm p-2 shadow-md">
-            {singleRecipe.ingredients}
-          </p>
+          <div className="community-ingredients text-left bg-[#E0A96D] text-white rounded-md text-sm p-2 shadow-md">
+            {parse(`${singleRecipe.ingredients}`)}
+          </div>
           <h3 className="mt-5 font-semibold mb-3 tracking-wide">Comments</h3>
           <div className="comment-section mt-5">
             <GetComments recipeId={singleRecipe._id} />

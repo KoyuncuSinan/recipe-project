@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import PersonIcon from "@mui/icons-material/Person";
 import { useMediaQuery } from "react-responsive";
+import logo from "./images/logo.png"
 
 export default function Navbar() {
   const [isLogin, setIsLogin] = useState(null);
@@ -48,7 +49,7 @@ export default function Navbar() {
         <div className="flex flex-row md:w-4/5 xl:w-2/4 items-center mx-auto justify-start relative">
           <div className="basis-8 mx-3">
             <img
-              src="https://www.transparentpng.com/thumb/food/n0nASj-food-plate-cut-out.png"
+              src={logo}
               onClick={() => navigate("/")}
               className="hover:cursor-pointer"
             ></img>
@@ -97,7 +98,7 @@ export default function Navbar() {
             )}
             {isMobile ? null : <div className="w-px h-6 bg-gray-500 mx-2"></div>}
             {isLogin ? (
-              <a onClick={logout} className="hover:underline">
+              <a onClick={logout} className="hover:underline italic">
                 Logout
               </a>
             ) : isMobile ? (

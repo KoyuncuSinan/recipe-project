@@ -39,7 +39,7 @@ export default function CommunityRecipes() {
         <button
           onClick={() => navigate("/community/create")}
           className="bg-[#201E20] hover:bg-[#E0A96D] text-white hover:text-black 
-          rounded-md p-2 shadow-md w-1/3 md:w-1/12 shadow-[#E0A96D] hover:shadow-[#201E20]"
+          rounded-md p-2 shadow-md w-1/3 md:w-[15%] shadow-[#E0A96D] hover:shadow-[#201E20]"
         >
           Create a new recipe
         </button>
@@ -49,13 +49,12 @@ export default function CommunityRecipes() {
           ? recipe.map((item, index) => (
               <div className="single-recipe p-3 bg-[#E0A96D] hover:bg-[#bc7d39] text-white active:bg-[#201E20] 
               active:overflow-x-scroll mb-4 relative rounded-lg shadow-[#201E20] shadow-md
-              md:w-4/4 md:mx-auto md:mt-8">
+              md:w-4/4 md:mx-auto md:mt-8" key={item._id}>
                 {item.owner && <ComRecipeOwner recipe={item} />}
                 <p className="text-xs text-right">
                   {item.createdAt.slice(0, 10)}
                 </p>
                 <a
-                  key={item._id}
                   onClick={() => navigate(`/community/recipes/${item._id}`)}
                   className="recipe text-center rounded-lg"
                 >
