@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Searchbar from "./components/Searchbar.js";
 import ComRecipeOwner from "./components/ComRecipeOwner.js";
+import jwt_decode from "jwt-decode";
+import DeleteRecipe from "./components/DeleteRecipe.js";
+
 
 export default function CommunityRecipes() {
   const [recipe, setRecipe] = useState([]);
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  const userId = jwt_decode(token).id
 
   useEffect(() => {
     const allRecipes = async () => {
@@ -48,7 +52,7 @@ export default function CommunityRecipes() {
         {recipe.length >= 1
           ? recipe.map((item, index) => (
               <div className="single-recipe p-3 bg-[#E0A96D] hover:bg-[#bc7d39] text-white active:bg-[#201E20] 
-              active:overflow-x-scroll mb-4 relative rounded-lg shadow-[#201E20] shadow-md
+              mb-4 relative rounded-lg shadow-[#201E20] shadow-md
               md:w-4/4 md:mx-auto md:mt-8" key={item._id}>
                 {item.owner && <ComRecipeOwner recipe={item} />}
                 <p className="text-xs text-right">
@@ -65,6 +69,7 @@ export default function CommunityRecipes() {
                   ></img>
                   <h2 className="mt-3 text-lg md:mt-2 md:text-lg xl:mt-4 xl:text-lg ">{item.title}</h2>
                 </a>
+                {item.owner._id === userId && <DeleteRecipe recipeId = {item._id} />}
               </div>
             )).reverse()
           : ""}

@@ -75,6 +75,24 @@ export const createRecipe = async (req, res) => {
   }
 };
 
+export const deleteRecipe = async (req,res) => {
+  try{
+    const ownerId = req.body.ownerId;
+    const recipeId = req.body.recipeId;
+    const recipe = await Recipe.findById(recipeId)
+    const recipeOwner = recipe.owner
+
+    if(ownerId.toString() == recipeOwner.toString()){
+      await recipe.deleteOne({_id: recipeId})
+      res.status(200).json({msg: "Post successfully deleted."})
+    }else{
+      res.status(403).json({msg: "You are not the owner of the post."})
+    }
+  } catch(err){
+    res.status(500).json({msg: "Server Error"})
+  }
+}
+
 export const getRecipe = async (req, res) => {
   try {
     const recipe = await Recipe.find().populate("owner");

@@ -1,5 +1,5 @@
 import express from "express";
-import {getRecipe,singleRecipe,upload, createRecipe,bookmarked, makeComment, getComment} from "../controllers/recipe-controller.js"
+import {getRecipe,singleRecipe,upload,deleteRecipe, createRecipe,bookmarked, makeComment, getComment} from "../controllers/recipe-controller.js"
 import {verifyToken} from "../middlewares/middle-auth.js"
 
 
@@ -13,8 +13,8 @@ router.get("/community/recipes/:id", singleRecipe)
 router.post("/community/recipes/:id",bookmarked)
 router.post("/community/recipes/:id/comments", makeComment)
 router.get("/community/recipes/:id/comments", getComment)
-
 router.post("/community/create", upload.single("picturePath"), verifyToken, createRecipe)
+router.post("/community/recipes/:id/delete",deleteRecipe)
 
 
 
