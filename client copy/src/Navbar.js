@@ -44,7 +44,7 @@ export default function Navbar() {
   };
 
   return (
-    <>
+    <header>
       <nav className=" text-white bg-[#E0A96D] py-1 border-[#512e0e] border-[1px] shadow-md">
         <div className="flex flex-row md:w-4/5 xl:w-2/4 items-center mx-auto justify-start relative">
           <div className="basis-8 mx-3">
@@ -149,6 +149,6 @@ export default function Navbar() {
           ) : null}
         </div>
       ) : null}
-    </>
+    </header>
   );
 }
