@@ -56,10 +56,10 @@ export default function Searchbar() {
       <div className="searchInputs w-4/5 md:w-1/2 mx-auto relative my-4 rounded-xl border-none shadow-sm shadow-[#E0A96D]">
         <input
           type="text"
-          placeholder="Search an recipe"
+          placeholder="Search a recipe"
           value={wordEntered}
           onChange={handleFilter}
-          className = "w-full text-inherit font-light rounded-xl px-2 h-7 md:h-9 outline-none"
+          className = "w-full text-inherit font-light rounded-xl px-2 h-7 md:h-9 border-transparent focus:border-[#512e0e] focus:ring-0"
         />
         <div className="searchIcon absolute bottom-0.5 md:bottom-1 right-2">
           {wordEntered.length === 0 ? (
@@ -75,7 +75,7 @@ export default function Searchbar() {
             return (
               <a
                 className="dataItem hover:text-[#E0A96D]"
-                href={`http://localhost:3001/community/recipes/${value._id}`}
+                href={`http://localhost:3000/community/recipes/${value._id}`}
                 target="_blank"
               >
                 <p>{value.title}</p>
