@@ -52,7 +52,7 @@ export default function CommunitySingle() {
           <h2 className="font-bold text-lg mb-3 tracking-wide underline">
             {singleRecipe.title}
           </h2>
-          <div className="relative">
+          <div className="relative mt-6">
             <img
               src={singleRecipe.picturePath}
               className="recipe-image rounded-lg h-100 mx-auto

@@ -30,7 +30,8 @@ export default function MakeComment({ recipeId }) {
           return errorMsg.msg;
         }
         const data = await res.json();
-        setUser(data);
+        console.log(data)
+        setUser(data.user);
       } catch (err) {
         console.log(err);
         return err;
@@ -70,7 +71,7 @@ export default function MakeComment({ recipeId }) {
 
   return (
     <div>
-      {user && (
+      {user &&(
         <div className="flex flex-row justify-center mt-4">
           <img src={user.picturePath} className = "h-8 w-8 rounded-xl mr-2"></img>
           <form onSubmit={handleSubmit} className="relative">
@@ -80,7 +81,7 @@ export default function MakeComment({ recipeId }) {
               onChange={(e) => setComment(e.target.value)}
               rows="3"
               cols="20"
-              className="rounded-md p-2 text-black active:border-none w-72 text-xs/"
+              className="rounded-md p-2 text-black active:border-none w-72 text-xs/ resize-none"
               onInput={handleInput}
               ref={textAreaRef}
             />

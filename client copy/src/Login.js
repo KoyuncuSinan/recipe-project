@@ -28,7 +28,7 @@ export default function Login() {
       const data = await response.json();
       localStorage.setItem("token", data.token);
       console.log(data);
-      navigate("/");
+      navigate("/community/recipes");
     } catch (err) {
       return err;
     }
@@ -39,7 +39,7 @@ export default function Login() {
       <form onSubmit={handleSubmit} className="mt-6">
         <h1 className="text-center mb-3 font-semibold underline">Login</h1>
         <div
-          className="mx-auto w-4/5 p-2 bg-[#E0A96D] text-white rounded-md
+          className="mx-auto w-4/5 py-2 px-6 bg-[#E0A96D] text-white rounded-md
         xs:w-[65%] sm:w-[55%] sx:w-[45%] md:w-[40%] lg:w-[30%] xl:w-[25%]"
         >
           <div className="flex flex-col mt-2">

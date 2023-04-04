@@ -64,7 +64,7 @@ export default function ProfilePage() {
               <img
                 src={profile.picturePath}
                 alt="User profile picture"
-                className="w-20 h-20 rounded-full mt-3 ml-3"
+                className="w-20 h-20 rounded-full mt-3 ml-3 object-cover"
               ></img>
               <div className="name-surname flex flex-row ml-4 text-lg font-semibold">
                 <p>{profile.firstname}</p>

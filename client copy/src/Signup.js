@@ -34,7 +34,7 @@ export default function Signup() {
       const data = await res.json();
       console.log(data);
       setForm(data)
-      navigate("/");
+      navigate("/auth/login");
     } catch (err) {
       return err;
     }
@@ -45,13 +45,13 @@ export default function Signup() {
     <main>
       <form onSubmit={handleSubmit} className= "mt-6" encType="multipart/form-data">
         <h1 className="text-center mb-3 font-semibold underline">Register</h1>
-        <div className="mx-auto w-4/5 p-2 bg-[#E0A96D] text-white rounded-md
+        <div className="mx-auto w-4/5 p-5 bg-[#E0A96D] text-white rounded-md
         xs:w-[65%] sm:w-[55%] sx:w-[45%] md:w-[40%] lg:w-[30%] xl:w-[25%]">
           <div className="flex flex-col mt-2">
-            <label htmlFor="firstname">Firstname*</label>
+            <label htmlFor="firstname" className="te">Firstname*</label>
             <input
               type="text"
-              className= "form-input rounded-md text-black"
+              className= "form-input rounded-md text-black h-[2rem] " 
               required
               onChange={(e) =>
                 setForm({ ...form, [e.target.name]: e.target.value })
@@ -61,12 +61,12 @@ export default function Signup() {
               value={form.firstname}
             ></input>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col mt-3">
           <label htmlFor="lastname">Lastname*</label>
             <input
               type="text"
               required
-              className= "rounded-md text-black"
+              className= "rounded-md text-black h-[2rem] "
               onChange={(e) =>
                 setForm({ ...form, [e.target.name]: e.target.value })
               }
@@ -75,12 +75,12 @@ export default function Signup() {
               value={form.lastname}
             ></input>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col mt-3">
           <label htmlFor="email">Email*</label>
             <input
               type="email"
               required
-              className= "rounded-md text-black"
+              className= "rounded-md text-black h-[2rem] "
               onChange={(e) =>
                 setForm({ ...form, [e.target.name]: e.target.value })
               }
@@ -89,12 +89,12 @@ export default function Signup() {
               value={form.email}
             ></input>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col mt-3">
           <label htmlFor="password">Password*</label>
             <input
               type="password"
               required
-              className= "rounded-md text-black"
+              className= "rounded-md text-black h-[2rem] "
               onChange={(e) =>
                 setForm({ ...form, [e.target.name]: e.target.value })
               }
@@ -103,7 +103,7 @@ export default function Signup() {
               value={form.password}
             ></input>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col mt-3">
             <label htmlFor="picturePath">Image*</label>
             <input
               type="file"
@@ -114,11 +114,11 @@ export default function Signup() {
               id="picturePath"
             ></input>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col mt-3">
           <label htmlFor="location">Location</label>
             <input
               type="text"
-              className= "rounded-md text-black"
+              className= "rounded-md text-black h-[2rem] "
               onChange={(e) =>
                 setForm({ ...form, [e.target.name]: e.target.value })
               }
@@ -127,11 +127,11 @@ export default function Signup() {
               id="location"
             ></input>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col mt-3">
             <label htmlFor="profession">Profession</label>
             <input
               type="text"
-              className= "rounded-md text-black"
+              className= "rounded-md text-black h-[2rem] "
               onChange={(e) =>
                 setForm({ ...form, [e.target.name]: e.target.value })
               }
@@ -139,7 +139,7 @@ export default function Signup() {
               value={form.profession}
               id= "profession"
             ></input>
-            <button type="submit" className="mt-4 p-2 bg-[#201E20] hover:bg-[#512e0e] hover:cursor-pointer">Register</button>
+            <button type="submit" className="mt-4 p-2 bg-[#201E20] hover:bg-[#512e0e] hover:cursor-pointer ">Register</button>
           </div>
         </div>
       </form>

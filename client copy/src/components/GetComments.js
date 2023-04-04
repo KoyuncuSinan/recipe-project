@@ -38,10 +38,10 @@ export default function GetComments({ recipeId }) {
     comments && comments.length !== 0
       ? comments?.map((comment, index) => {
           return (
-            <section className="comments items-center bg-[#E0A96D] text-sm text-white p-0.5 rounded-md mb-2 shadow-lg
+            <section key={comment._id} className="comments items-center bg-[#E0A96D] text-sm text-white p-0.5 rounded-md mb-2 shadow-lg
             lg:w-3/4 lg:mx-auto
             xl:w-2/4 xl:mx-auto" >
-              <div key={comment._id} className="flex flex-row w-2/4 mt-1 ml-2 ">
+              <div className="flex flex-row w-2/4 mt-1 ml-2 ">
                 <img
                   src={comment.author.picturePath}
                   className="rounded-xl h-8 w-8"
