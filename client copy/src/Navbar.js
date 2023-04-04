@@ -59,7 +59,7 @@ export default function Navbar() {
               onClick={() => navigate("/recipes")}
               className="px-1 md:px-2 hover:underline"
             >
-              Recipes
+              Random Recipes
             </a>
             <a
               onClick={

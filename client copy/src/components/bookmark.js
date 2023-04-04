@@ -28,8 +28,13 @@ export default function Bookmark({recipeId}){
                         },
                     });
                     const data = await res.json();
-                    if(res.ok){
-                        setIsBookmarked(data.bookmarks.includes(recipeId))
+                    const bookmarks = data.bookmarks;
+                    const recipeIds = bookmarks.map(bookmark => bookmark._id);
+                    if(recipeIds.includes(recipeId)){
+                        setIsBookmarked(true)
+                        console.log(data.bookmarks)
+                    }else{
+                        setIsBookmarked(false);
                     }
                 }catch(err){
                     console.error(err);
@@ -42,24 +47,25 @@ export default function Bookmark({recipeId}){
     },[userId, recipeId])
 
     const handleBookmark = async () => {
-        try{
+        try {
             const res = await fetch(`http://localhost:3001/community/recipes/${recipeId}`,{
-                method: "POST",
-                headers:{
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({recipeId,userId})
+              method: "POST",
+              headers:{
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({recipeId,userId})
             });
-            const data = await res.json()
-            if(res.ok){
-                setIsBookmarked(!isBookmarked);
-                console.log(data.msg)
-            }else{
-                console.log(data.msg)
+        
+            const data = await res.json();
+            if (res.ok) {
+                setIsBookmarked(!isBookmarked)
+              console.log(data.msg);
+            } else {
+              console.log(data.msg);
             }
-        }catch(err){
-            console.error(err)
-        }
+          } catch (err) {
+            console.error(err);
+          }
     }
 
     if(!fetchCompleted){
@@ -68,7 +74,7 @@ export default function Bookmark({recipeId}){
 
     return(
         <button onClick={handleBookmark} className= "absolute right-0">
-            {userId && isBookmarked ? <BookmarkRemoveIcon/> : <BookmarkAddIcon/>}
+            {userId && fetchCompleted && isBookmarked ? <BookmarkRemoveIcon/> : <BookmarkAddIcon/>}
         </button>
     )
 }

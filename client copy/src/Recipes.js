@@ -34,7 +34,7 @@ export default function Recipes() {
   return (
     <>
       <h1 className="recipe-h1 text-center mt-6 font-semibold">
-        Official Recipes
+        Today's Selected Recipes
       </h1>
       <div className="recipes md:grid md:grid-cols-2 md:gap-x-[7rem] 2xl:grid-cols-3 md:w-2/3 lg:w-1/2 w-3/5 mx-auto">
         {recipe.length >= 1

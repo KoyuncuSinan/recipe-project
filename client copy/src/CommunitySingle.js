@@ -56,7 +56,7 @@ export default function CommunitySingle() {
             <img
               src={singleRecipe.picturePath}
               className="recipe-image rounded-lg h-100 mx-auto
-              md:h-[40rem]"
+              md:h-[30rem]"
             ></img>
             <Bookmark recipeId={singleRecipe._id} />
           </div>
