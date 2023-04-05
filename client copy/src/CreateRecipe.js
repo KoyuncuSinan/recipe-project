@@ -89,7 +89,7 @@ export default function CreateRecipe() {
               <ReactQuill theme="snow" value={description} onChange= {setDescription} id="description" className="h-[8rem]"/>
 
             </div>
-            <div className="mt-[5rem] flex flex-col">
+            <div className="mt-[4rem] flex flex-col">
               <label htmlFor="picturePath">Food Image</label>
               <input
                 id="picturePath"
@@ -103,7 +103,7 @@ export default function CreateRecipe() {
               <label htmlFor="ingredients">Ingredients</label>
               <ReactQuill theme="snow" value={ingredients} onChange= {setIngredients} id="ingredients" className="h-[8rem]" />
             </div>
-            <button className="submit mt-[5rem] absolute right-1 bg-[#512e0e] hover:bg-[#bc7d39] text-white px-3 py-1 rounded-md ">Submit</button>
+            <button className="submit mt-[4rem] absolute right-1 bg-[#512e0e] hover:bg-[#bc7d39] text-white px-3 py-1 rounded-md ">Submit</button>
           </div>
         </form>
       ) : (

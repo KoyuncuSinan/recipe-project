@@ -20,8 +20,14 @@ export const register = async(req,res) => {
             profession: req.body.profession,
         });
 
-        const savedUser = await newUser.save();
-        res.status(201).json(savedUser)
+        if(password.length < 5){
+            res.status(400).json({msg: "Password should be longer than 5 characters"})
+        }else if(await User.findOne({email: newUser.email})){
+            res.status(403).json({msg: "Email already exist!"})
+        }else{
+            const savedUser = await newUser.save();
+            res.status(201).json(savedUser)
+        }
     } catch (err){
         res.status(500).json({error: err.message});
     }

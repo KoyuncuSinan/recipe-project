@@ -11,7 +11,9 @@ export default function Signup() {
     location: "",
     profession: "",
   });
-  const [imagePath, setImagePath] = useState("")
+  const [imagePath, setImagePath] = useState("");
+  const [isThereError, setIsThereError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("")
 
   const addToFormData = (formData, fields) => {
     for (const field in fields){
@@ -31,11 +33,22 @@ export default function Signup() {
         method: "POST",
         body: formData
       });
+
       const data = await res.json();
-      console.log(data);
-      setForm(data)
-      navigate("/auth/login");
+
+      if(!res.ok){
+        console.log(data.msg);
+        setIsThereError(true);
+        setErrorMessage(data.msg)
+      } else{
+        console.log(data);
+        setForm(data)
+        navigate("/auth/login");
+      }
     } catch (err) {
+      console.log(err)
+      setIsThereError(true);
+      setErrorMessage(err)
       return err;
     }
   };
@@ -47,6 +60,7 @@ export default function Signup() {
         <h1 className="text-center mb-3 font-semibold underline">Register</h1>
         <div className="mx-auto w-4/5 p-5 bg-[#E0A96D] text-white rounded-md
         xs:w-[65%] sm:w-[55%] sx:w-[45%] md:w-[40%] lg:w-[30%] xl:w-[25%]">
+        {isThereError && <p className="text-center text-red-600 font-bold text-lg">{errorMessage.toString()}</p>}
           <div className="flex flex-col mt-2">
             <label htmlFor="firstname" className="te">Firstname*</label>
             <input
@@ -94,6 +108,7 @@ export default function Signup() {
             <input
               type="password"
               required
+              minLength="5"
               className= "rounded-md text-black h-[2rem] "
               onChange={(e) =>
                 setForm({ ...form, [e.target.name]: e.target.value })

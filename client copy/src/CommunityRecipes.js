@@ -4,15 +4,23 @@ import Searchbar from "./components/Searchbar.js";
 import ComRecipeOwner from "./components/ComRecipeOwner.js";
 import jwt_decode from "jwt-decode";
 import DeleteRecipe from "./components/DeleteRecipe.js";
+import Error403 from "./components/Error403.js";
 
 
 export default function CommunityRecipes() {
   const [recipe, setRecipe] = useState([]);
+  const [userId, setUserId] = useState("")
+  const [doesHaveToken, setDoesHaveToken] = useState(false)
   const navigate = useNavigate();
-  const token = localStorage.getItem("token");
-  const userId = jwt_decode(token).id
+  
 
   useEffect(() => {
+  const token = localStorage.getItem("token");
+  if(token){
+    const decodedId = jwt_decode(token).id
+    setUserId(decodedId)
+    setDoesHaveToken(true)
+  }
     const allRecipes = async () => {
       try {
         const res = await fetch("http://localhost:3001/community/recipes", {
@@ -36,6 +44,8 @@ export default function CommunityRecipes() {
   }, []);
 
   return (
+    <>
+    {doesHaveToken ?
     <section>
       <h1 className="text-center mt-6 font-semibold">Community Recipes</h1>
       <Searchbar />
@@ -75,5 +85,7 @@ export default function CommunityRecipes() {
           : ""}
       </div>
     </section>
+  : <Error403 />}
+    </>
   );
 }

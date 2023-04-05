@@ -7,15 +7,22 @@ import jwt_decode from "jwt-decode";
 import MakeComment from "./components/MakeComment.js";
 import GetComments from "./components/GetComments.js";
 import ComSingleOwner from "./components/ComSingleOwner.js";
+import Error403 from "./components/Error403.js";
+import Error404 from "./components/Error404.js";
 
 export default function CommunitySingle() {
   const [singleRecipe, setSingleRecipe] = useState([]);
+  const [doesHaveToken, setDoesHaveToken] = useState(false)
+  const [isThereError, setIsThereError] = useState(false)
   const { id } = useParams();
-  const token = localStorage.getItem("token");
-  const userId = jwt_decode(token).id;
+  
 
   useEffect(() => {
-    const getRecipe = async () => {
+  const token = localStorage.getItem("token");
+  if(token){
+    setDoesHaveToken(true)
+    
+  }    const getRecipe = async () => {
       try {
         const res = await fetch(
           `http://localhost:3001/community/recipes/${id}`,
@@ -23,9 +30,15 @@ export default function CommunitySingle() {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
             },
           }
         );
+        if(!res.ok){
+          const errorMsg = await res.json()
+          console.log(errorMsg.error)
+          setIsThereError(true)
+        }
         const data = await res.json();
         if (data) {
           console.log(data);
@@ -41,7 +54,7 @@ export default function CommunitySingle() {
 
   return (
     <div>
-      {singleRecipe && singleRecipe.length !== 0 ? (
+      {doesHaveToken ? singleRecipe && singleRecipe.length !== 0 ? (
         <div
           key={singleRecipe._id}
           className="mt-6 text-center w-5/5 mx-auto bg-[#201E20] p-3 text-[#DDC3A5] relative
@@ -74,9 +87,8 @@ export default function CommunitySingle() {
             <MakeComment recipeId={singleRecipe._id} />
           </div>
         </div>
-      ) : (
-        "Loading..."
-      )}
+      ) : (isThereError ? <Error404 /> : "Loading...")
+      : <Error403 />}
     </div>
   );
 }

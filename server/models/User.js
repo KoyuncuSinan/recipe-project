@@ -4,13 +4,13 @@ const UserSchema = new mongoose.Schema(
         firstname:{
             type: String,
             required: true,
-            min: 2,
+            min: 1,
             max: 50,
         },
         lastname:{
             type: String,
             required: true,
-            min: 2,
+            min: 1,
             max: 50,
         },
         email:{
@@ -27,6 +27,7 @@ const UserSchema = new mongoose.Schema(
         },
         picturePath:{
             type: String,
+            required: true,
             default: "",
         },
         recipes:[

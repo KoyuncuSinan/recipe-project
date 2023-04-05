@@ -5,6 +5,7 @@ import multer from "multer";
 import multerS3 from "multer-s3";
 import dotenv from "dotenv";
 import User from "../models/User.js";
+import {BSONError,BSON} from "bson";
 
 dotenv.config();
 
@@ -40,6 +41,47 @@ const filefilter = (req, file, cb) => {
 };
 
 export const upload = multer({ storage: storage, fileFilter: filefilter });
+
+export const uploadMiddleware = (req, res, next) => {
+  try {
+    upload.single('picturePath')(req, res, function (err) {
+      if (err) {
+        // Delete uploaded file from S3 bucket
+        const s3Params = {
+          Bucket: process.env.AWS_BUCKET_NAME,
+          Key: req.file.key,
+        };
+        s3.deleteObject(s3Params, function (err, data) {
+          if (err) {
+            console.log(err);
+          }
+        });
+
+        // Return error response
+        return res.status(500).json({
+          message: "File upload failed",
+        });
+      }
+      next();
+    });
+  } catch (err) {
+    // Delete uploaded file from S3 bucket
+    const s3Params = {
+      Bucket: process.env.AWS_BUCKET_NAME,
+      Key: req.file.key,
+    };
+    s3.deleteObject(s3Params, function (err, data) {
+      if (err) {
+        console.log(err);
+      }
+    });
+
+    // Return error response
+    return res.status(500).json({
+      message: "File upload failed",
+    });
+  }
+};
 
 export const createRecipe = async (req, res) => {
   try {
@@ -101,7 +143,11 @@ export const getRecipe = async (req, res) => {
 };
 
 export const singleRecipe = async (req, res) => {
-  const recipeId = mongoose.Types.ObjectId(req.params.id);
+  const recipeId = req.params.id;
+  if(!recipeId.match(/^[0-9a-fA-F]{24}$/)) {
+    res.status(400).json({ error: "Invalid recipe ID" });
+    return;
+  }
   try {
     const recipe = await Recipe.findById(recipeId).populate("owner");
     if (!recipe) {
@@ -110,7 +156,7 @@ export const singleRecipe = async (req, res) => {
     }
     res.json(recipe);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+      res.status(500).json({ error: err.message });
   }
 };
 
@@ -139,7 +185,7 @@ export const bookmarked = async (req, res) => {
       res.json({ msg: "Bookmark removed" });
     }
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
+      res.status(500).json({ error: err.message });
+
   }
 };

@@ -43,6 +43,6 @@ export default function DeleteComment({ commentId, recipeId }) {
     }
   };
   return (
-    <>{user && <DisabledByDefaultIcon onClick={handleDelete} />}</>
+    <>{user && <DisabledByDefaultIcon onClick={handleDelete} className="hover:cursor-pointer hover:border-2 hover:border-solid hover:border-black"/>}</>
   );
 }

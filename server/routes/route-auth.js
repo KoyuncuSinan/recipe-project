@@ -1,6 +1,6 @@
 import express from "express";
 import {login, register} from "../controllers/auth-controller.js"
-import {upload} from "../controllers/recipe-controller.js"
+import {upload,uploadMiddleware} from "../controllers/recipe-controller.js"
 
 const router = express.Router();
 
