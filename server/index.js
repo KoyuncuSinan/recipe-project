@@ -10,6 +10,7 @@ import helmet from "helmet";
 import authRoutes from "./routes/route-auth.js"
 import routeRecipe from "./routes/route-recipe.js"
 import profileRoutes from "./routes/route-profile.js"
+import commentRoutes from "./routes/route-comment.js"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname  = path.dirname(__filename);
@@ -28,6 +29,7 @@ app.use("/auth", authRoutes);
 // app.use("/community",recipeRoutes )
 app.use(routeRecipe);
 app.use(profileRoutes);
+app.use(commentRoutes);
 
 // Mongoose
 const PORT = process.env.PORT || 6001 // for backup

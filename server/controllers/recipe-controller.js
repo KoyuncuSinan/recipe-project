@@ -3,10 +3,8 @@ import mongoose from "mongoose";
 import aws from "aws-sdk";
 import multer from "multer";
 import multerS3 from "multer-s3";
-import { verifyToken } from "../middlewares/middle-auth.js";
 import dotenv from "dotenv";
 import User from "../models/User.js";
-import Comment from "../models/Comment-model.js";
 
 dotenv.config();
 
@@ -143,54 +141,5 @@ export const bookmarked = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Server error" });
-  }
-};
-
-export const makeComment = async (req, res) => {
-  try {
-    const recipeId = req.params.id;
-    const { text, author } = req.body;
-
-    const comment = new Comment({
-      comment: text,
-      author: author,
-      recipeId: recipeId,
-    });
-
-    const savedComment = await comment.save();
-    const updatedRecipe = await Recipe.findByIdAndUpdate(
-      recipeId,
-      { $push: { comments: savedComment._id } },
-      { new: true }
-    );
-    res.status(201).json(savedComment);
-  } catch (err) {
-    res.status(500).json({ err: "Internal server error" });
-  }
-};
-
-export const getComment = async (req, res) => {
-  try {
-    const recipeId = mongoose.Types.ObjectId(req.params.id);
-    console.log("recipeId", recipeId);
-    const recipe = await Recipe.findById(recipeId).populate({
-      path: "comments",
-      populate: {
-        path: "author",
-      },
-    });
-    if (!recipe) {
-      res.status(404).json({ msg: "Recipe not found." });
-    }
-
-    const comments = recipe.comments;
-
-    if (comments.length !== 0) {
-      res.status(200).json({ comments: comments });
-    } else if (comments.length === 0) {
-      res.status(200).json({ msg: "No comments yet" });
-    }
-  } catch (err) {
-    res.status(500).json({ msg: "Internal server error" });
   }
 };

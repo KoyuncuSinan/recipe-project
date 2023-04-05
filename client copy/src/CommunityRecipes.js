@@ -65,7 +65,7 @@ export default function CommunityRecipes() {
                   <img
                     src={item.picturePath}
                     alt="Recipe"
-                    className="h-1/4 rounded-lg object-cover md:h-[15rem] md:w-[15rem] md:mx-auto border-solid border-2 border-[#201E20]"
+                    className="h-[10rem] w-[12rem] mx-auto rounded-lg object-cover md:h-[15rem] md:w-[15rem] md:mx-auto border-solid border-2 border-[#201E20]"
                   ></img>
                   <h2 className="mt-3 text-lg md:mt-2 md:text-lg xl:mt-4 xl:text-lg ">{item.title}</h2>
                 </a>
