@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js"
+import {upload} from "../controllers/recipe-controller.js"
 
 // Register
 export const register = async(req,res) => {
@@ -15,7 +16,7 @@ export const register = async(req,res) => {
             lastname: req.body.lastname,
             email: req.body.email,
             password: passwordHash,
-            picturePath: req.file.location,
+            picturePath: "",
             location: req.body.location,
             profession: req.body.profession,
         });
@@ -25,8 +26,14 @@ export const register = async(req,res) => {
         }else if(await User.findOne({email: newUser.email})){
             res.status(403).json({msg: "Email already exist!"})
         }else{
-            const savedUser = await newUser.save();
-            res.status(201).json(savedUser)
+            upload.single("picturePath")(req,res, async(err) => {
+                if (err){
+                    return res.status(400).json({msg: "Error uploading file"})
+                }
+                newUser.picturePath = req.file.location || "";
+                const savedUser = await newUser.save();
+                res.status(201).json(savedUser)
+            })
         }
     } catch (err){
         res.status(500).json({error: err.message});

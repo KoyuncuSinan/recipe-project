@@ -5,7 +5,6 @@ import multer from "multer";
 import multerS3 from "multer-s3";
 import dotenv from "dotenv";
 import User from "../models/User.js";
-import {BSONError,BSON} from "bson";
 
 dotenv.config();
 
@@ -41,47 +40,6 @@ const filefilter = (req, file, cb) => {
 };
 
 export const upload = multer({ storage: storage, fileFilter: filefilter });
-
-export const uploadMiddleware = (req, res, next) => {
-  try {
-    upload.single('picturePath')(req, res, function (err) {
-      if (err) {
-        // Delete uploaded file from S3 bucket
-        const s3Params = {
-          Bucket: process.env.AWS_BUCKET_NAME,
-          Key: req.file.key,
-        };
-        s3.deleteObject(s3Params, function (err, data) {
-          if (err) {
-            console.log(err);
-          }
-        });
-
-        // Return error response
-        return res.status(500).json({
-          message: "File upload failed",
-        });
-      }
-      next();
-    });
-  } catch (err) {
-    // Delete uploaded file from S3 bucket
-    const s3Params = {
-      Bucket: process.env.AWS_BUCKET_NAME,
-      Key: req.file.key,
-    };
-    s3.deleteObject(s3Params, function (err, data) {
-      if (err) {
-        console.log(err);
-      }
-    });
-
-    // Return error response
-    return res.status(500).json({
-      message: "File upload failed",
-    });
-  }
-};
 
 export const createRecipe = async (req, res) => {
   try {
