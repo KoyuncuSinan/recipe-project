@@ -19,7 +19,7 @@ export default function GetComments({ recipeId }) {
       }
       try {
         const res = await fetch(
-          `http://localhost:3001/community/recipes/${recipeId}/comments`,
+          `https://quick-plate.onrender.com/community/recipes/${recipeId}/comments`,
           {
             method: "GET",
             headers: {

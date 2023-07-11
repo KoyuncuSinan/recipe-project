@@ -18,7 +18,7 @@ export default function MakeComment({ recipeId }) {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/users/${userId}`, {
+        const res = await fetch(`https://quick-plate.onrender.com/users/${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -43,7 +43,7 @@ export default function MakeComment({ recipeId }) {
   const handleSubmit = async (e) => {
     try {
       const res = await fetch(
-        `http://localhost:3001/community/recipes/${recipeId}/comments`,
+        `https://quick-plate.onrender.com/community/recipes/${recipeId}/comments`,
         {
           method: "POST",
           headers: {
