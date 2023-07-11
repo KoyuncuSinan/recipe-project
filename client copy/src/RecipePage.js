@@ -5,7 +5,6 @@ import parse from 'html-react-parser';
 
 export default function RecipePage(){
     const [recipePage, setRecipePage] = useState([])
-    const navigate = useNavigate()
     const {id} = useParams()
 
     useEffect(() => {
@@ -40,7 +39,7 @@ export default function RecipePage(){
           xl:w-3/5 rounded-lg"> 
                 <h2 className="font-bold text-lg mb-3 tracking-wide underline">{recipePage.title}</h2>
                 <img src={recipePage.image} className="recipe-image rounded-lg h-100 mx-auto
-              md:h-[20rem] object-cover"></img>
+              md:h-[20rem] object-cover" alt="Recipe image"></img>
                 <h3 className="mt-5 font-semibold mb-3 tracking-wide">How to Cook</h3>
                 <div className="instruction text-left bg-[#E0A96D] text-white rounded-md text-sm p-2 shadow-md"> 
                 {parse(`${recipePage.instructions}`)}
@@ -50,7 +49,7 @@ export default function RecipePage(){
                     {recipePage.extendedIngredients.map((ingredient, index) => 
                     <div key= {ingredient.id} className="ingredient w-2/3 mx-auto text-center ite">
                         <p className="mt-4 uppercase text-xs font-normal text-black">{ingredient.name}</p>
-                        <img src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} className = "ingredient-img w-[5rem] h-[5rem] object-cover mx-auto"></img>
+                        <img src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} className = "ingredient-img w-[5rem] h-[5rem] object-cover mx-auto" alt="Ingredient Image"></img>
                         <p className="font-extralight text-gray-500">Amount: {ingredient.amount}</p>
                     </div>
                      )}

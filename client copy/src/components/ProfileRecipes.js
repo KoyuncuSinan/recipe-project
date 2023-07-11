@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import DeleteRecipe from "./DeleteRecipe";
 import jwtDecode from "jwt-decode";
-import Delete from "@mui/icons-material/Delete";
 
 
 export default function ProfileRecipes({ profile }) {

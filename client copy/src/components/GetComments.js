@@ -58,7 +58,7 @@ export default function GetComments({ recipeId }) {
               <img
                 src={comment.author.picturePath}
                 className="rounded-xl h-8 w-8"
-              ></img>
+              alt="User's picture"></img>
               <p className="ml-3">{comment.author.firstname}</p>
               <p className="ml-1">{comment.author.lastname}</p>
             </div>

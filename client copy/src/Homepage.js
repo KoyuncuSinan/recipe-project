@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import image1 from "./images/cake-mix-cookie-bars-recipe-4.jpeg";
 import image2 from "./images/dragon-roll1-1655475546.jpeg";
@@ -40,32 +39,32 @@ export default function Homepage() {
       <section className="grid grid-cols-3 mx-auto mt-5 gap-2">
         <img
           src={image1}
-          alt="Recipe image"
+          alt="Recipe"
           className="object-cover h-[5rem] w-[5rem] mx-auto sx:h-[7rem] sx:w-[7rem] md:h-[15rem] md:w-[15rem]"
         ></img>
         <img
           src={image2}
-          alt="Recipe image"
+          alt="Recipe"
           className="object-cover h-[5rem] w-[5rem] mx-auto sx:h-[7rem] sx:w-[7rem] md:h-[15rem] md:w-[15rem]"
         ></img>
         <img
           src={image3}
-          alt="Recipe image"
+          alt="Recipe"
           className="object-cover h-[5rem] w-[5rem] mx-auto sx:h-[7rem] sx:w-[7rem] md:h-[15rem] md:w-[15rem]"
         ></img>
         <img
           src={image4}
-          alt="Recipe image"
+          alt="Recipe"
           className="object-cover h-[5rem] w-[5rem] mx-auto sx:h-[7rem] sx:w-[7rem] md:h-[15rem] md:w-[15rem]"
         ></img>
         <img
           src={image5}
-          alt="Recipe image"
+          alt="Recipe"
           className="object-cover h-[5rem] w-[5rem] mx-auto sx:h-[7rem] sx:w-[7rem] md:h-[15rem] md:w-[15rem]"
         ></img>
         <img
           src={image6}
-          alt="Recipe image"
+          alt="Recipe"
           className="object-cover h-[5rem] w-[5rem] mx-auto sx:h-[7rem] sx:w-[7rem] md:h-[15rem] md:w-[15rem]"
         ></img>
 

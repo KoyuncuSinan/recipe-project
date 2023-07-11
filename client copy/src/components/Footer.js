@@ -11,16 +11,16 @@ export default function Footer(){
             </a>
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                 <li>
-                    <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+                    <p class="mr-4 hover:underline md:mr-6 ">About</p>
                 </li>
                 <li>
-                    <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                    <p class="mr-4 hover:underline md:mr-6">Privacy Policy</p>
                 </li>
                 <li>
-                    <a href="#" class="mr-4 hover:underline md:mr-6 ">Licensing</a>
+                    <p class="mr-4 hover:underline md:mr-6 ">Licensing</p>
                 </li>
                 <li>
-                    <a href="#" class="hover:underline">Contact</a>
+                    <p class="hover:underline">Contact</p>
                 </li>
             </ul>
         </div>

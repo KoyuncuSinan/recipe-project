@@ -8,7 +8,6 @@ import WorkIcon from "@mui/icons-material/Work";
 export default function ProfilePage() {
   const [profile, setProfile] = useState();
   const [profileBookmarks, setProfileBookmarks] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
   const [showRecipe, setShowRecipe] = useState(false);
   const [showBookmark, setShowBookmark] = useState(false);
 
@@ -34,7 +33,6 @@ export default function ProfilePage() {
         });
         if (!res.ok) {
           const errorData = await res.json();
-          setErrorMessage(errorData.msg);
         } else {
           const data = await res.json();
           setProfile(data.user);
@@ -43,7 +41,6 @@ export default function ProfilePage() {
         }
       } catch (err) {
         console.log(err);
-        setErrorMessage("An error occurred while showing the page.");
       }
     };
     getProfilePage();

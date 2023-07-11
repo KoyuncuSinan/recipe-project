@@ -52,6 +52,7 @@ export default function Navbar() {
               src={logo}
               onClick={() => navigate("/")}
               className="hover:cursor-pointer"
+              alt="Quickplate's logo"
             ></img>
           </div>
           <div>

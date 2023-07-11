@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function DeleteRecipe({ recipeId }) {
-
-  const [isRemoveButtonClicked, setIsRemoveButtonClicked] = useState(false);
   
   const token = localStorage.getItem("token");
   const userId = jwt_decode(token).id;
-  const navigate = useNavigate()
   const handleRemove = async () => {
     try {
       const res = await fetch(

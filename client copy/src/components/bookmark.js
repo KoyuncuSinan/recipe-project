@@ -1,5 +1,4 @@
 import React,{useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import BookmarkAddIcon from '@mui/icons-material/BookmarkAdd';
 import BookmarkRemoveIcon from '@mui/icons-material/BookmarkRemove';

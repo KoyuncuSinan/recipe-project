@@ -4,7 +4,6 @@ import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 
 export default function DeleteComment({ commentId, recipeId }) {
   const [user, setUser] = useState(null);
-  const [message, setMessage] = useState(null);
   const [userId, setUserId] = useState(null)
 
   useEffect(() => {
@@ -31,10 +30,8 @@ export default function DeleteComment({ commentId, recipeId }) {
       if (!res.ok) {
         const errorMsg = await res.json();
         console.log(errorMsg.msg)
-        setMessage(errorMsg.msg);
       }
       const data = await res.json();
-      setMessage(data.msg);
       console.log(data.msg);
       window.location.reload()
     } catch (err) {

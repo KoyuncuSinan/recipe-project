@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef} from "react";
-import { useParams } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
 export default function MakeComment({ recipeId }) {
@@ -73,7 +72,7 @@ export default function MakeComment({ recipeId }) {
     <div>
       {user &&(
         <div className="flex flex-row justify-center mt-4">
-          <img src={user.picturePath} className = "h-8 w-8 rounded-xl mr-2"></img>
+          <img src={user.picturePath} className = "h-8 w-8 rounded-xl mr-2" alt="User's picture"></img>
           <form onSubmit={handleSubmit} className="relative">
             <textarea
               placeholder="Make a comment..."

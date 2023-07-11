@@ -16,6 +16,7 @@ export default function ProfileBookmarks({ bookmarks }) {
             src={item.picturePath}
             className="mx-auto rounded-md sx:h-[30rem] sx:w-[30rem] object-cover lg:h-[15rem] hover:cursor-pointer"
             onClick={() => navigate(`/community/recipes/${item._id}`)}
+            alt="Item's image"
           ></img>
 
           <p className="text-xs text-end mb-2">{item.createdAt.slice(0, 10)}</p>

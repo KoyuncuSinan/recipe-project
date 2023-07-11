@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -49,7 +48,7 @@ export default function Searchbar() {
       }
     };
     allRecipes();
-  }, []);
+  }, [token]);
 
   return (
     <div className="">
@@ -69,7 +68,7 @@ export default function Searchbar() {
           )}
         </div>
       </div>
-      {filteredData.length != 0 && (
+      {filteredData.length !== 0 && (
         <div className="dataResult w-4/5 md:w-1/2 mx-auto bg-white p-2 -mt-2.5 rounded-md">
           {filteredData.slice(0, 15).map((value, key) => {
             return (
@@ -77,6 +76,7 @@ export default function Searchbar() {
                 className="dataItem hover:text-[#E0A96D]"
                 href={`http://localhost:3000/community/recipes/${value._id}`}
                 target="_blank"
+                rel="noreferrer"
               >
                 <p>{value.title}</p>
               </a>

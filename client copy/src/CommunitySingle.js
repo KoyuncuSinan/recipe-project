@@ -1,9 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import parse from 'html-react-parser';
 import Bookmark from "./components/bookmark.js";
-import jwt_decode from "jwt-decode";
 import MakeComment from "./components/MakeComment.js";
 import GetComments from "./components/GetComments.js";
 import ComSingleOwner from "./components/ComSingleOwner.js";
@@ -70,6 +69,7 @@ export default function CommunitySingle() {
               src={singleRecipe.picturePath}
               className="recipe-image rounded-lg h-100 mx-auto
               md:h-[30rem]"
+              alt="Recipe"
             ></img>
             <Bookmark recipeId={singleRecipe._id} />
           </div>
