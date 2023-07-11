@@ -1,5 +1,4 @@
 import express from "express";
-import { verify } from "jsonwebtoken";
 import {getRecipe,singleRecipe,upload,deleteRecipe, createRecipe,bookmarked} from "../controllers/recipe-controller.js"
 import {verifyToken} from "../middlewares/middle-auth.js"
 
