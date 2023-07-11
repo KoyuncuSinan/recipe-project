@@ -74,7 +74,7 @@ export default function Searchbar() {
             return (
               <a
                 className="dataItem hover:text-[#E0A96D]"
-                href={`http://localhost:3000/community/recipes/${value._id}`}
+                href={`https://quickplate.onrender.com/community/recipes/${value._id}`}
                 target="_blank"
                 rel="noreferrer"
               >

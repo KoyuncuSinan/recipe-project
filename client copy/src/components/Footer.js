@@ -5,7 +5,7 @@ export default function Footer(){
 <footer class="bg-white shadow dark:bg-gray-900 mt-4">
     <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
-            <a href="http://localhost:3000/" class="flex items-center mb-4 sm:mb-0">
+            <a href="https://quickplate.onrender.com/" class="flex items-center mb-4 sm:mb-0">
                 <img src={logo} class="h-8 mr-3" alt="Quickplate Logo" />
                 <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Quickplate</span>
             </a>
@@ -25,7 +25,7 @@ export default function Footer(){
             </ul>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="http://localhost:3000/" class="hover:underline">Quickplate</a>. All Rights Reserved.</span>
+        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://quickplate.onrender.com/" class="hover:underline">Quickplate</a>. All Rights Reserved.</span>
     </div>
 </footer>
 
