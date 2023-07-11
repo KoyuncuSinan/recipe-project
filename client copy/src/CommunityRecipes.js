@@ -23,7 +23,7 @@ export default function CommunityRecipes() {
   }
     const allRecipes = async () => {
       try {
-        const res = await fetch("http://localhost:3001/community/recipes", {
+        const res = await fetch("https://quick-plate.onrender.com/community/recipes", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
