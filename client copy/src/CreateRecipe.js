@@ -48,7 +48,7 @@ export default function CreateRecipe() {
       data.append(`${key}`, recipe[key]);
     });
     try {
-      const res = await fetch("https://quicksplash.vercel.app/community/create", {
+      const res = await fetch("http://localhost:3001/community/create", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

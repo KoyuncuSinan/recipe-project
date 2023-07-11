@@ -29,7 +29,7 @@ export default function Signup() {
     try {
       addToFormData(formData, form)
       formData.append("picturePath",imagePath)
-      const res = await fetch("https://quicksplash.vercel.app/auth/register", {
+      const res = await fetch("http://localhost:3001/auth/register", {
         method: "POST",
         body: formData
       });
