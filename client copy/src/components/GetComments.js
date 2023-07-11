@@ -19,7 +19,7 @@ export default function GetComments({ recipeId }) {
       }
       try {
         const res = await fetch(
-          `https://quicksplash.vercel.app/community/recipes/${recipeId}/comments`,
+          `http://localhost:3001/community/recipes/${recipeId}/comments`,
           {
             method: "GET",
             headers: {

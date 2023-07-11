@@ -25,7 +25,7 @@ export default function CommunitySingle() {
   }    const getRecipe = async () => {
       try {
         const res = await fetch(
-          `https://quicksplash.vercel.app/community/recipes/${id}`,
+          `http://localhost:3001/community/recipes/${id}`,
           {
             method: "GET",
             headers: {

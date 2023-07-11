@@ -31,7 +31,7 @@ export default function Searchbar() {
   useEffect(() => {
     const allRecipes = async () => {
       try {
-        const res = await fetch("https://quicksplash.vercel.app/community/recipes", {
+        const res = await fetch("http://localhost:3001/community/recipes", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
