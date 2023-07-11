@@ -21,7 +21,7 @@ export default function Bookmark({recipeId}){
         const fetchUser = async() => {
             if (userId){
                 try{
-                    const res = await fetch(`http://localhost:3001/users/${userId}`,{
+                    const res = await fetch(`https://quicksplash.vercel.app/users/${userId}`,{
                         method: "GET",
                         headers: {
                             "Content-Type":"application/json",
@@ -48,7 +48,7 @@ export default function Bookmark({recipeId}){
 
     const handleBookmark = async () => {
         try {
-            const res = await fetch(`http://localhost:3001/community/recipes/${recipeId}`,{
+            const res = await fetch(`https://quicksplash.vercel.app/community/recipes/${recipeId}`,{
               method: "POST",
               headers:{
                 "Content-Type": "application/json",
