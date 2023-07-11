@@ -29,7 +29,7 @@ The following technologies were used in the development of Quickplate:
 ## Documentation
 
 - Clone the repository:
- git clone https://github.com/your-username/quickplate.git
+ git clone https://github.com/KoyuncuSinan/quickplate.git
 
 - Navigate to the project directory:
 cd quickplate
