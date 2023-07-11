@@ -13,7 +13,7 @@ export default function DeleteRecipe({ recipeId }) {
   const handleRemove = async () => {
     try {
       const res = await fetch(
-        `http://localhost:3001/community/recipes/${recipeId}/delete`,
+        `https://quicksplash.vercel.app/community/recipes/${recipeId}/delete`,
         {
           method: "POST",
           headers: {

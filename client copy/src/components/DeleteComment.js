@@ -19,7 +19,7 @@ export default function DeleteComment({ commentId, recipeId }) {
   const handleDelete = async (e) => {
     try {
       const res = await fetch(
-        `http://localhost:3001/community/recipes/${recipeId}/comments/delete`,
+        `https://quicksplash.vercel.app/community/recipes/${recipeId}/comments/delete`,
         {
           method: "DELETE",
           headers: {

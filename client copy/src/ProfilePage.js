@@ -26,7 +26,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const getProfilePage = async () => {
       try {
-        const res = await fetch(`http://localhost:3001/users/${id}`, {
+        const res = await fetch(`https://quicksplash.vercel.app/users/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
