@@ -11,8 +11,7 @@ import CommunityRecipes from "./CommunityRecipes";
 import CommunitySingle from "./CommunitySingle";
 import ProfilePage from "./ProfilePage";
 import Footer from "./components/Footer";
-import "./index.css";
-
+import "./input.css"
 export default function App() {
   return (
     <div className="app flex flex-col min-h-screen ">
