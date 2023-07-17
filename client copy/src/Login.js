@@ -1,12 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 export default function Login() {
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
   });
+
+  const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   const navigate = useNavigate();
 
@@ -20,13 +26,17 @@ export default function Login() {
         },
         body: JSON.stringify(loginForm),
       });
-
+      const data = await response.json();
+      setIsLoading(true)
       if (!response.ok) {
-        throw new Error(response.statusText);
+        setIsLoading(true)
+        setIsError(true);
+        setErrorMessage(data.error)
+        setIsLoading(false);
       }
 
-      const data = await response.json();
       localStorage.setItem("token", data.token);
+      setIsLoading(false);
       console.log(data);
       navigate("/community/recipes");
     } catch (err) {
@@ -36,6 +46,10 @@ export default function Login() {
 
   return (
     <>
+    {isLoading && <Box sx={{ display: "flex"}}> 
+      <CircularProgress />
+    </Box>}
+      {isError && <p className="text-semibold text-center text-red-600">{errorMessage}</p>}
       <form onSubmit={handleSubmit} className="mt-6">
         <h1 className="text-center mb-3 font-semibold underline">Login</h1>
         <div
