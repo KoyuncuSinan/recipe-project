@@ -58,14 +58,17 @@ export const makeComment = async (req, res) => {
 export const deleteComment = async (req, res) => {
   try {
     const recipeId = req.params.id;
-    const recipe = await Recipe.findById(recipeId)
     const userId = req.body.userId;
     const commentId = req.body.commentId;
+    const recipe = await Recipe.findById(recipeId)
     const comment = await Comment.findById(commentId);
 
     if(comment){
         if(comment.author.toString() === userId.toString() || userId.toString() === recipe.owner.toString()){
             await Comment.deleteOne({_id: commentId});
+            await Recipe.findByIdAndUpdate(recipeId, {
+              $pull: {comments: commentId}
+            })
             res.status(200).json({msg: "Comment successfully deleted."})
         } else{
             res.status(403).json({msg: "You don't have the authority."})
