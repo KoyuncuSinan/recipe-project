@@ -16,25 +16,23 @@ export const register = async(req,res) => {
             lastname: req.body.lastname,
             email: req.body.email,
             password: passwordHash,
-            picturePath: "",
+            picturePath: req.file.location,
             location: req.body.location,
             profession: req.body.profession,
         });
 
         if(password.length < 5){
             res.status(400).json({msg: "Password should be longer than 5 characters"})
-        }else if(await User.findOne({email: newUser.email})){
-            res.status(403).json({msg: "Email already exist!"})
-        }else{
-            upload.single("picturePath")(req,res, async(err) => {
-                if (err){
-                    return res.status(400).json({msg: "Error uploading file"})
-                }
-                newUser.picturePath = req.file.location || "";
-                const savedUser = await newUser.save();
-                res.status(201).json(savedUser)
-            })
         }
+        
+        if(await User.findOne({email: newUser.email})){
+            res.status(403).json({msg: "Email already exist!"})
+        }
+            
+ 
+         const savedUser = await newUser.save();
+         res.status(201).json(savedUser)
+     
     } catch (err){
         res.status(500).json({error: err.msg});
     }

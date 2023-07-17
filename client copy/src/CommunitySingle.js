@@ -8,15 +8,19 @@ import GetComments from "./components/GetComments.js";
 import ComSingleOwner from "./components/ComSingleOwner.js";
 import Error403 from "./components/Error403.js";
 import Error404 from "./components/Error404.js";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 export default function CommunitySingle() {
   const [singleRecipe, setSingleRecipe] = useState([]);
   const [doesHaveToken, setDoesHaveToken] = useState(false)
   const [isThereError, setIsThereError] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const { id } = useParams();
   
 
   useEffect(() => {
+    setIsLoading(true)
   const token = localStorage.getItem("token");
   if(token){
     setDoesHaveToken(true)
@@ -46,6 +50,8 @@ export default function CommunitySingle() {
       } catch (err) {
         console.log(err);
         return err;
+      }finally{
+        setIsLoading(false);
       }
     };
     getRecipe();
@@ -53,6 +59,9 @@ export default function CommunitySingle() {
 
   return (
     <div>
+    {isLoading && <Box sx={{ display: "flex"}} className="mt-10 mx-auto items-center justify-center"> 
+      <CircularProgress />
+    </Box>}
       {doesHaveToken ? singleRecipe && singleRecipe.length !== 0 ? (
         <div
           key={singleRecipe._id}
@@ -87,7 +96,7 @@ export default function CommunitySingle() {
             <MakeComment recipeId={singleRecipe._id} />
           </div>
         </div>
-      ) : (isThereError ? <Error404 /> : "Loading...")
+      ) : (isThereError ? <Error404 /> : null)
       : <Error403 />}
     </div>
   );

@@ -1,11 +1,11 @@
 import express from "express";
-import {getRecipe,singleRecipe,upload,deleteRecipe, createRecipe,bookmarked} from "../controllers/recipe-controller.js"
+import {getRecipe,singleRecipe,upload,deleteRecipe, createRecipe,bookmarked, invoke} from "../controllers/recipe-controller.js"
 import {verifyToken} from "../middlewares/middle-auth.js"
 
 
 
 const router = express.Router()
-
+router.get("/", invoke)
 router.get("/community/recipes", verifyToken, getRecipe)
 
 router.get("/community/recipes/:id", verifyToken, singleRecipe)

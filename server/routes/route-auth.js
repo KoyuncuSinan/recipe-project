@@ -5,7 +5,7 @@ import {upload} from "../controllers/recipe-controller.js"
 const router = express.Router();
 
 
-router.post("/register",register)
+router.post("/register", upload.single("picturePath"), register)
 router.post("/login", login)
 
 

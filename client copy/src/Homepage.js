@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import image1 from "./images/cake-mix-cookie-bars-recipe-4.jpeg";
 import image2 from "./images/dragon-roll1-1655475546.jpeg";
@@ -7,8 +7,25 @@ import image4 from "./images/Garlicky Lemon Baked Tilapia.jpg";
 import image5 from "./images/strawberry-popsicles-recipe-1-of-4.jpeg";
 import image6 from "./images/stuffed-shells-5-2.jpeg";
 
+
 export default function Homepage() {
   const navigate = useNavigate();
+
+useEffect(() => {
+  const invokeBackend = async () => {
+    try{
+      const res = await fetch("https://quick-plate.onrender.com",{
+        method:"GET"
+      });
+      const data = await res.json()
+      console.log(data);
+    }catch(err){
+      console.error("Failed to invoke", err)
+    }
+  }
+  invokeBackend();
+}, [])
+
   return (
     <main className="mt-12 md:mt-24 max-w-xs mx-auto sm:max-w-sm md:max-w-[50rem] lg:max-w-4xl xl:max-w-6xl 2xl:max-w-6xl md:flex md:flex-row md:justify-between">
       <section className="flex 2xl:flex-1 flex-col justify-between items-center text-center md:mr-4 lg:mr-8 xl:mr-10 2xl:mr-16">

@@ -147,3 +147,7 @@ export const bookmarked = async (req, res) => {
 
   }
 };
+
+export const invoke = async (req,res) => {
+  res.status(200).json({message: "Invoked"})
+}

@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 export default function Signup() {
   const [form, setForm] = useState({
@@ -12,6 +14,7 @@ export default function Signup() {
     profession: "",
   });
   const [imagePath, setImagePath] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
   const [isThereError, setIsThereError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("")
 
@@ -26,9 +29,10 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true)
     try {
-      addToFormData(formData, form)
       formData.append("picturePath",imagePath)
+      addToFormData(formData, form)
       const res = await fetch("https://quick-plate.onrender.com/auth/register", {
         method: "POST",
         body: formData
@@ -50,6 +54,8 @@ export default function Signup() {
       setIsThereError(true);
       setErrorMessage(err)
       return err;
+    }finally{
+      setIsLoading(false)
     }
   };
 
@@ -155,6 +161,9 @@ export default function Signup() {
               id= "profession"
             ></input>
             <button type="submit" className="mt-4 p-2 bg-[#201E20] hover:bg-[#512e0e] hover:cursor-pointer ">Register</button>
+            {isLoading && <Box sx={{ display: "flex"}} className="mt-10 mx-auto items-center justify-center"> 
+      <CircularProgress />
+    </Box>}
           </div>
         </div>
       </form>
