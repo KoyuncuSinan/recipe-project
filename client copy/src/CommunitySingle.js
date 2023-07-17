@@ -39,16 +39,16 @@ export default function CommunitySingle() {
         );
         if(!res.ok){
           const errorMsg = await res.json()
-          console.log(errorMsg.error)
+          
           setIsThereError(true)
         }
         const data = await res.json();
         if (data) {
-          console.log(data);
+          
           setSingleRecipe(data);
         }
       } catch (err) {
-        console.log(err);
+        
         return err;
       }finally{
         setIsLoading(false);

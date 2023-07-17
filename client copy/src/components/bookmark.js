@@ -31,7 +31,7 @@ export default function Bookmark({recipeId}){
                     const recipeIds = bookmarks.map(bookmark => bookmark._id);
                     if(recipeIds.includes(recipeId)){
                         setIsBookmarked(true)
-                        console.log(data.bookmarks)
+                        
                     }else{
                         setIsBookmarked(false);
                     }
@@ -58,9 +58,9 @@ export default function Bookmark({recipeId}){
             const data = await res.json();
             if (res.ok) {
                 setIsBookmarked(!isBookmarked)
-              console.log(data.msg);
+              
             } else {
-              console.log(data.msg);
+              
             }
           } catch (err) {
             console.error(err);

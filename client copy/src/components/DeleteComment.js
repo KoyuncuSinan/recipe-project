@@ -29,13 +29,13 @@ export default function DeleteComment({ commentId, recipeId }) {
       );
       if (!res.ok) {
         const errorMsg = await res.json();
-        console.log(errorMsg.msg)
+        
       }
       const data = await res.json();
-      console.log(data.msg);
+      
       window.location.reload()
     } catch (err) {
-      console.log(err);
+      
       return err;
     }
   };

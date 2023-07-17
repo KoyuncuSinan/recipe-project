@@ -21,7 +21,7 @@ export default function Recipes() {
         const data = await res.json();
         if (data) {
           const list = Object.values(data);
-          console.log(list);
+          
           setRecipe(list);
         }
       } catch (err) {

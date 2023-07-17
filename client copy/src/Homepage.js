@@ -18,7 +18,7 @@ useEffect(() => {
         method:"GET"
       });
       const data = await res.json()
-      console.log(data);
+      
     }catch(err){
       console.error("Failed to invoke", err)
     }

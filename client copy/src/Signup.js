@@ -41,16 +41,16 @@ export default function Signup() {
       const data = await res.json();
 
       if(!res.ok){
-        console.log(data.msg);
+        
         setIsThereError(true);
         setErrorMessage(data.msg)
       } else{
-        console.log(data);
+        
         setForm(data)
         navigate("/auth/login");
       }
     } catch (err) {
-      console.log(err)
+      
       setIsThereError(true);
       setErrorMessage(err)
       return err;

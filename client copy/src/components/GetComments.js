@@ -14,7 +14,7 @@ export default function GetComments({ recipeId }) {
   useEffect(() => {
     const handleComments = async () => {
       if (!recipeId) {
-        console.log("Recipe ID is not defined");
+        
         return;
       }
       try {
@@ -29,14 +29,14 @@ export default function GetComments({ recipeId }) {
         );
         const data = await res.json();
         if (!res.ok) {
-          console.log(res);
+          
           throw new Error();
         }
-        console.log(data);
+        
         setComments(data.comments);
         setRecipe(data.recipe);
       } catch (err) {
-        console.log(err);
+        
         return err;
       }
     };

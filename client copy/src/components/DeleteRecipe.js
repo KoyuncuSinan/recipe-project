@@ -22,14 +22,14 @@ export default function DeleteRecipe({ recipeId }) {
 
       if (!res.ok) {
         const errorMsg = await res.json();
-        console.log(errorMsg.msg);
+        
         return errorMsg.msg;
       }
       const data = await res.json();
-      console.log(data)
+      
       window.location.reload(true)
     } catch (err) {
-      console.log(err);
+      
       return err;
     }
   };

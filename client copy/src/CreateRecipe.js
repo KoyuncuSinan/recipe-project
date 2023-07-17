@@ -57,13 +57,13 @@ export default function CreateRecipe() {
       });
       const responseData = await res.json();
       if (res.ok) {
-        console.log(responseData);
+        
         navigate("/community/recipes");
       } else {
         throw new Error(res.statusText);
       }
     } catch (err) {
-      console.log(err);
+      
       return err;
     }
   };

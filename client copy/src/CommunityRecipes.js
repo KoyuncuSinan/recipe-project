@@ -32,11 +32,10 @@ export default function CommunityRecipes() {
         });
         const data = await res.json();
         if (data) {
-          console.log(data);
           setRecipe(data);
         }
       } catch (err) {
-        console.log(err);
+        
         return err;
       }
     };

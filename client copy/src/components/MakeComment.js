@@ -25,14 +25,14 @@ export default function MakeComment({ recipeId }) {
         });
         if (!res.ok) {
           const errorMsg = await res.json();
-          console.log(errorMsg.msg);
+          
           return errorMsg.msg;
         }
         const data = await res.json();
-        console.log(data)
+        
         setUser(data.user);
       } catch (err) {
-        console.log(err);
+        
         return err;
       }
     };
@@ -51,17 +51,17 @@ export default function MakeComment({ recipeId }) {
           body: JSON.stringify({ text: comment, author: userId }),
         }
       );
-      console.log(userId);
-      console.log(res);
+      
+      
       const data = await res.json();
       if (!res.ok) {
-        console.log(res);
+        
         throw new Error("Something went wrong");
       }
       setComment("");
-      console.log(data);
+      
     } catch (err) {
-      console.log(err);
+      
       return err;
     }
   };

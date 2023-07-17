@@ -39,11 +39,11 @@ export default function Searchbar() {
         });
         const data = await res.json();
         if (data) {
-          console.log(data);
+          
           setRecipes(data);
         }
       } catch (err) {
-        console.log(err);
+        
         return err;
       }
     };

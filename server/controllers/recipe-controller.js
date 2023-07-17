@@ -43,7 +43,7 @@ export const upload = multer({ storage: storage, fileFilter: filefilter });
 
 export const createRecipe = async (req, res) => {
   try {
-    console.log(req.file);
+    
 
     const recipe = new Recipe({
       title: req.body.title,

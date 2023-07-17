@@ -19,11 +19,11 @@ export default function RecipePage(){
                 let data = await res.json();
                 if(data){
                     const list = Object.values(data)
-                    console.log(data)
+                    
                     setRecipePage(data)
                 }
             }catch (err){
-                console.log(err)
+                
                 return err;
             }
         }

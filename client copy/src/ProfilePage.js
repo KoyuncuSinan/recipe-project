@@ -37,10 +37,10 @@ export default function ProfilePage() {
           const data = await res.json();
           setProfile(data.user);
           setProfileBookmarks(data.bookmarks);
-          console.log(data);
+          
         }
       } catch (err) {
-        console.log(err);
+        
       }
     };
     getProfilePage();

@@ -9,7 +9,7 @@ dotenv.config();
 export const getComment = async (req, res) => {
   try {
     const recipeId = mongoose.Types.ObjectId(req.params.id);
-    console.log("recipeId", recipeId);
+    
     const recipe = await Recipe.findById(recipeId).populate({
       path: "comments",
       populate: {

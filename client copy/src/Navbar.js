@@ -24,7 +24,7 @@ export default function Navbar() {
       const decoded = jwt_decode(token);
       setIsLogin(token);
       setUserId(decoded.id);
-      console.log(userId);
+      
     } else {
       setIsLogin(null);
       setUserId(null);
@@ -36,7 +36,7 @@ export default function Navbar() {
     setIsLogin(null);
     setUserId(null);
     navigate("/");
-    console.log("Logged out");
+    
   };
 
   const profileClick = () => {
