@@ -19,6 +19,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true)
       const response = await fetch("https://quick-plate.onrender.com/auth/login", {
         method: "POST",
         headers: {
@@ -27,31 +28,27 @@ export default function Login() {
         body: JSON.stringify(loginForm),
       });
       const data = await response.json();
-      setIsLoading(true)
-      if (!response.ok) {
-        setIsLoading(true)
-        setIsError(true);
-        setErrorMessage(data.error)
-        setIsLoading(false);
-      }
 
-      localStorage.setItem("token", data.token);
-      setIsLoading(false);
-      console.log(data);
-      navigate("/community/recipes");
+      if (!response.ok) {
+        setIsError(true);
+        setErrorMessage(data.msg);
+      }else{
+        localStorage.setItem("token", data.token);
+        navigate("/community/recipes");
+      }
     } catch (err) {
-      return err;
+      setIsError(true);
+      setErrorMessage(err.msg);
+    }finally{
+      setIsLoading(false);
     }
   };
 
   return (
     <>
-    {isLoading && <Box sx={{ display: "flex"}}> 
-      <CircularProgress />
-    </Box>}
-      {isError && <p className="text-semibold text-center text-red-600">{errorMessage}</p>}
       <form onSubmit={handleSubmit} className="mt-6">
         <h1 className="text-center mb-3 font-semibold underline">Login</h1>
+        {isError && <p className="font-bold text-center text-red-600">{errorMessage}</p>}
         <div
           className="mx-auto w-4/5 py-2 px-6 bg-[#E0A96D] text-white rounded-md
         xs:w-[65%] sm:w-[55%] sx:w-[45%] md:w-[40%] lg:w-[30%] xl:w-[25%]"
@@ -84,6 +81,9 @@ export default function Login() {
               placeholder="Your password"
             ></input>
             <button type="submit" className="mt-4 p-2 bg-[#201E20] hover:bg-[#512e0e] hover:cursor-pointer w-3/5 mx-auto">Login</button>
+            {isLoading && <Box sx={{ display: "flex"}} className="mt-10 mx-auto items-center justify-center"> 
+      <CircularProgress />
+    </Box>}
           </div>
         </div>
       </form>

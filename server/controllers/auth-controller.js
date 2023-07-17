@@ -8,7 +8,7 @@ export const register = async(req,res) => {
     try{
 
         const password = req.body.password
-        const salt = await bcrypt.genSalt();
+        const salt = await bcrypt.genSalt(10);
         const passwordHash = await bcrypt.hash(password,salt);
 
         const newUser = new User({
@@ -36,7 +36,7 @@ export const register = async(req,res) => {
             })
         }
     } catch (err){
-        res.status(500).json({error: err.message});
+        res.status(500).json({error: err.msg});
     }
 };
 
