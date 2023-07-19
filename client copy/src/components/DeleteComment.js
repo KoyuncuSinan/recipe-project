@@ -18,7 +18,7 @@ export default function DeleteComment({ commentId, recipeId }) {
   const handleDelete = async (e) => {
     try {
       const res = await fetch(
-        `https://quick-plate.onrender.com/community/recipes/${recipeId}/comments/delete`,
+        `https://quickplate-backend.vercel.app/community/recipes/${recipeId}/comments/delete`,
         {
           method: "DELETE",
           headers: {

@@ -23,7 +23,7 @@ export default function CommunityRecipes() {
   }
     const allRecipes = async () => {
       try {
-        const res = await fetch("https://quick-plate.onrender.com/community/recipes", {
+        const res = await fetch("https://quickplate-backend.vercel.app/community/recipes", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

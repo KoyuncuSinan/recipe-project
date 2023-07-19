@@ -19,7 +19,7 @@ export default function GetComments({ recipeId }) {
       }
       try {
         const res = await fetch(
-          `https://quick-plate.onrender.com/community/recipes/${recipeId}/comments`,
+          `https://quickplate-backend.vercel.app/community/recipes/${recipeId}/comments`,
           {
             method: "GET",
             headers: {

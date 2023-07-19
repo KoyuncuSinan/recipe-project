@@ -33,7 +33,7 @@ export default function Signup() {
     try {
       formData.append("picturePath",imagePath)
       addToFormData(formData, form)
-      const res = await fetch("https://quick-plate.onrender.com/auth/register", {
+      const res = await fetch("https://quickplate-backend.vercel.app/auth/register", {
         method: "POST",
         body: formData
       });

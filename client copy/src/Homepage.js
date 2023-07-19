@@ -14,7 +14,7 @@ export default function Homepage() {
 useEffect(() => {
   const invokeBackend = async () => {
     try{
-      const res = await fetch("https://quick-plate.onrender.com",{
+      const res = await fetch("https://quickplate-backend.vercel.app",{
         method:"GET"
       });
       const data = await res.json()

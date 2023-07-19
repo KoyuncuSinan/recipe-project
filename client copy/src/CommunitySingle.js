@@ -28,7 +28,7 @@ export default function CommunitySingle() {
   }    const getRecipe = async () => {
       try {
         const res = await fetch(
-          `https://quick-plate.onrender.com/community/recipes/${id}`,
+          `https://quickplate-backend.vercel.app/community/recipes/${id}`,
           {
             method: "GET",
             headers: {

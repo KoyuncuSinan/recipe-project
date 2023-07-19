@@ -20,7 +20,7 @@ export default function Bookmark({recipeId}){
         const fetchUser = async() => {
             if (userId){
                 try{
-                    const res = await fetch(`https://quick-plate.onrender.com/users/${userId}`,{
+                    const res = await fetch(`https://quickplate-backend.vercel.app/users/${userId}`,{
                         method: "GET",
                         headers: {
                             "Content-Type":"application/json",
@@ -47,7 +47,7 @@ export default function Bookmark({recipeId}){
 
     const handleBookmark = async () => {
         try {
-            const res = await fetch(`https://quick-plate.onrender.com/community/recipes/${recipeId}`,{
+            const res = await fetch(`https://quickplate-backend.vercel.app/community/recipes/${recipeId}`,{
               method: "POST",
               headers:{
                 "Content-Type": "application/json",

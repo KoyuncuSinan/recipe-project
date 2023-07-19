@@ -20,7 +20,7 @@ export default function Login() {
     e.preventDefault();
     try {
       setIsLoading(true)
-      const response = await fetch("https://quick-plate.onrender.com/auth/login", {
+      const response = await fetch("https://quickplate-backend.vercel.app/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

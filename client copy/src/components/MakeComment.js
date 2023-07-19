@@ -17,7 +17,7 @@ export default function MakeComment({ recipeId }) {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const res = await fetch(`https://quick-plate.onrender.com/users/${userId}`, {
+        const res = await fetch(`https://quickplate-backend.vercel.app/users/${userId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export default function MakeComment({ recipeId }) {
   const handleSubmit = async (e) => {
     try {
       const res = await fetch(
-        `https://quick-plate.onrender.com/community/recipes/${recipeId}/comments`,
+        `https://quickplate-backend.vercel.app/community/recipes/${recipeId}/comments`,
         {
           method: "POST",
           headers: {

@@ -25,7 +25,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const getProfilePage = async () => {
       try {
-        const res = await fetch(`https://quick-plate.onrender.com/users/${id}`, {
+        const res = await fetch(`https://quickplate-backend.vercel.app/users/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

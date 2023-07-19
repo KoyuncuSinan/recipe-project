@@ -10,7 +10,7 @@ export default function DeleteRecipe({ recipeId }) {
   const handleRemove = async () => {
     try {
       const res = await fetch(
-        `https://quick-plate.onrender.com/community/recipes/${recipeId}/delete`,
+        `https://quickplate-backend.vercel.app/community/recipes/${recipeId}/delete`,
         {
           method: "POST",
           headers: {
